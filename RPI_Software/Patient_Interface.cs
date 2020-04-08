@@ -34,7 +34,6 @@ namespace RPI_Software
                 {
                     serLCD.lcdClear();
                     serLCD.lcdPrint("Start EKG-måling");
-
                 }
             }
 
