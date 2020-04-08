@@ -9,9 +9,8 @@ namespace RPI_Software
 {
     class Patient_Interface
     {
-        SerLCD serLCD = new SerLCD();
-        TWIST twist = new TWIST();
-
+        SerLCD serLCD = new SerLCD(63);
+        TWIST twist = new TWIST(63);
 
         public void ShowMenu()
         {
@@ -27,20 +26,11 @@ namespace RPI_Software
         {
             // Denne metode skal registrere hvilken skærm type der er på display og aflæse denne, hvorefter den aktiverer den valgte metode
             // til det der står på displayet
-            string screenStart = "Start EKG-måling";
-            serLCD.lcdPrint("Start EKG-måling");
-
-            while (serLCD.lcdPrint("Start EKG-måling")
-            {
                 if (twist.isPressed() == true)
                 {
-                    serLCD.lcdClear();
-                    serLCD.lcdPrint("Start EKG-måling");
-                }
-            }
-         
-        }
 
+                }
+        }
         public int CountDown10()
         {
             // Denne metode er en nedtællingsmetode der skal få displayet til at at indikere at en måling er startet, og brugeren har 10
@@ -49,23 +39,31 @@ namespace RPI_Software
             for (int i = 10; i > 0; i--)
             {
                 serLCD.lcdPrint("Ekg-målingen går igang om " + i + " sekunder");
+                Thread.Sleep(1000);
             }
-
-            return serLCD.lcdSetBackLight(0, 255, 0);
+            return 0;
 
         }
 
         public int CountDown50()
         {
-            // Denne metode er en nedtællingsmetode der skal få displayet til at at indikere at en måling er igang, og brugeren har 10
-            // sekunder til at gøre sig klar
+            // Denne metode er en nedtællingsmetode der skal få displayet til at at indikere at en måling er igang
+            serLCD.lcdSetBackLight(0, 255, 0);
+            for (int i = 50; i > 0; i--)
+            {
+                serLCD.lcdPrint("Ekg-målingen er færdig om " + i + " sekunder");
+                Thread.Sleep(1000);
+            }
+            serLCD.lcdSetBackLight(0, 0, 0);
+            serLCD.lcdPrint("Ekg-måling færdig");
+            return 0;
         }
 
         public void ReadingDone()
-        { 
+        {
             // Denne metode skal få displayet til at indikere at måligen er slut.
+            serLCD.lcdSetBackLight(0, 0, 0);
+            serLCD.lcdPrint("Ekg-måling færdig");
         }
-
-
     }
 }
