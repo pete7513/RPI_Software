@@ -1,10 +1,8 @@
 ﻿using System;
 
-namespace DataLayer
+namespace DTO
 {
    public class Class1
    {
-
-
    }
 }

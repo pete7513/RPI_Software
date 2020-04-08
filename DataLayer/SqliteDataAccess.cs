@@ -35,7 +35,7 @@ namespace Data
       }
     
 
-      public static void SavePeople(Personmodel p)
+      public static void EKGMSendt(ekg)
       {
          using (IDbConnection cnn = new SQLiteConnection(LoadConnectString()))
          {
@@ -45,6 +45,9 @@ namespace Data
 
       private static string LoadConnectString(string ID = "Default")
       {
+         //Dataccess skal ske i en app config fil, som kun findes i framework what to do?? 
+
+
          return ConfigurationManager.ConnectionStrings[ID].ConnectionString;
       }
    }
