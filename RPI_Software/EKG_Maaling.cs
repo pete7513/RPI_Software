@@ -4,7 +4,7 @@ using System.Text;
 
 namespace RPI_Software
 {
-   class EKG_Maaling
+   public class EKG_Maaling
    {
       public string Patient { get; set; }
       public DateTime DateTime { get; set; }
