@@ -14,7 +14,7 @@ namespace Raspberry_Pi_Dot_Net_Core_Console_Application3
 
             Console.WriteLine("Prøve 1");
 
-            Console.WriteLine("Prøve 2"); 
+            Console.WriteLine("Prøve  2"); 
         }
     }
 }
