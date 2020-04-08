@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace RPI_Software
+namespace DTO
 {
    public class EKG_Maaling
    {
