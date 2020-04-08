@@ -3,7 +3,6 @@ using RaspberryPiCore.ADC;
 using RaspberryPiCore.TWIST;
 using RaspberryPiCore.LCD;
 
-
 namespace Raspberry_Pi_Dot_Net_Core_Console_Application3
 {
     class Program
@@ -11,10 +10,6 @@ namespace Raspberry_Pi_Dot_Net_Core_Console_Application3
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
-
-            Console.WriteLine("Prøve 1");
-
-            Console.WriteLine("Prøve  2"); 
         }
     }
 }
