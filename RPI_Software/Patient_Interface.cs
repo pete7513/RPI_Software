@@ -26,11 +26,18 @@ namespace RPI_Software
         {
             // Denne metode skal registrere hvilken skærm type der er på display og aflæse denne, hvorefter den aktiverer den valgte metode
             // til det der står på displayet
-            string screen = "Start EKG-måling";
-            if (twist.isPressed() == true)
-            {
+            string screenStart = "Start EKG-måling";
 
+            while (screenStart.Contains("Start EKG-måling") == true)
+            {
+                if (twist.isPressed() == true)
+                {
+                    serLCD.lcdClear();
+                    serLCD.lcdPrint("Start EKG-måling");
+
+                }
             }
+
             
         }
 
