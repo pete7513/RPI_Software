@@ -12,6 +12,7 @@ namespace RPI_Software
         SerLCD serLCD = new SerLCD();
         TWIST twist = new TWIST();
 
+
         public void ShowMenu()
         {
             // Når programmet starter skal denne metode kaldes, den skal tænde display og vise de forskellige menuer på det.
@@ -27,24 +28,31 @@ namespace RPI_Software
             // Denne metode skal registrere hvilken skærm type der er på display og aflæse denne, hvorefter den aktiverer den valgte metode
             // til det der står på displayet
             string screenStart = "Start EKG-måling";
+            serLCD.lcdPrint("Start EKG-måling");
 
-            while (screenStart.Contains("Start EKG-måling") == true)
+            while (serLCD.lcdPrint("Start EKG-måling")
             {
                 if (twist.isPressed() == true)
                 {
                     serLCD.lcdClear();
                     serLCD.lcdPrint("Start EKG-måling");
-
                 }
             }
-
-            
+         
         }
 
         public int CountDown10()
-        { 
+        {
             // Denne metode er en nedtællingsmetode der skal få displayet til at at indikere at en måling er startet, og brugeren har 10
             // sekunder til at gøre sig klar
+            serLCD.lcdSetBackLight(255, 255, 0);
+            for (int i = 10; i > 0; i--)
+            {
+                serLCD.lcdPrint("Ekg-målingen går igang om " + i + " sekunder");
+            }
+
+            return serLCD.lcdSetBackLight(0, 255, 0);
+
         }
 
         public int CountDown50()
