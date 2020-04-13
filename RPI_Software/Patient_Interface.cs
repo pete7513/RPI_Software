@@ -7,7 +7,7 @@ using System.Threading;
 
 namespace RPI_Software
 {
-    class Patient_Interface
+    public class Patient_Interface
     {
         SerLCD serLCD = new SerLCD();
         TWIST twist = new TWIST(); 

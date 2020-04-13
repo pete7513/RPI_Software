@@ -6,10 +6,10 @@ using DTO;
 
 namespace RPI_Software
 {
-   class WiFi
+   class DataConnection
    {
       private SqlDBDataAccess access; 
-      public WiFi()
+      public DataConnection()
       {
          access = new SqlDBDataAccess();
       }

@@ -52,7 +52,7 @@ namespace RPI_Software
 
 
 
-         List data = new List();
+         List<int> data = new List<int>();
 
          data.Add(464646);
 
