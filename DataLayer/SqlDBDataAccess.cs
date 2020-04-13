@@ -13,11 +13,15 @@ namespace RPI_Software
       public Patient_CPR loadPatient()
       {
 
-
-
          Patient_CPR item = new Patient_CPR(Name, CPR);
 
          return item;
+      }
+
+      public void EKGM_DB_Sendt(EKG_Maaling _Maaling)
+      { 
+      
+
       }
 
       private SqlConnection OpenConnectionST
