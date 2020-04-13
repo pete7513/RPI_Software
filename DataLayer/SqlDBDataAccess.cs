@@ -9,15 +9,15 @@ namespace Data
 {
    public class SqlDBDataAccess
    {
-      public Patient_CPR loadPatient()
-      {
+      //public Patient_CPR loadPatient()
+      //{
 
 
 
-         Patient_CPR item = new Patient_CPR(Name, CPR);
+      //   //Patient_CPR item = new Patient_CPR(Name, CPR);
 
-         return item;
-      }
+      //   return i
+      //}
 
 
 
@@ -41,19 +41,19 @@ namespace Data
 
 
 
-      private SqlConnection OpenConnectionST
-      {
-         get
-         {
-            var con = new SqlConnection(@"Data Source=i4dab.ase.au.dk;Initial Catalog=F17ST2PRJ2OffEKGDatabase;Integrated Security=False;User ID=F17ST2PRJ2OffEKGDatabase;Password=F17ST2PRJ2OffEKGDatabase;Connect Timeout=15;Encrypt=False;TrustServerCertificate=False");
+      //private SqlConnection OpenConnectionST
+      //{
+      //   get
+      //   {
+      //      var con = new SqlConnection(@"Data Source=i4dab.ase.au.dk;Initial Catalog=F17ST2PRJ2OffEKGDatabase;Integrated Security=False;User ID=F17ST2PRJ2OffEKGDatabase;Password=F17ST2PRJ2OffEKGDatabase;Connect Timeout=15;Encrypt=False;TrustServerCertificate=False");
 
-            con.Open();
+      //      con.Open();
 
-            return con;
+      //      return con;
 
-         }
+      //   }
 
-      }
+      //}
 
       public void TestListSave()
 
@@ -89,17 +89,17 @@ namespace Data
 
 
 
-         using (SqlCommand cmd = new SqlCommand(insertStringParam, OpenConnectionST))
+         //   using (SqlCommand cmd = new SqlCommand(insertStringParam, OpenConnectionST))
 
-         {
+         //   {
 
-            // Get your parameters ready                    
+         //      // Get your parameters ready                    
 
-            cmd.Parameters.AddWithValue("@data", data.ToArray().SelectMany(value => BitConverter.GetBytes(value)).ToArray());
-            long id = (long)cmd.ExecuteScalar(); //Returns the identity of the new tuple/record  64 bit/8 bytes
-         }
+         //      cmd.Parameters.AddWithValue("@data", data.ToArray().SelectMany(value => BitConverter.GetBytes(value)).ToArray());
+         //      long id = (long)cmd.ExecuteScalar(); //Returns the identity of the new tuple/record  64 bit/8 bytes
+         //   }
 
+         //}
       }
-
    }
 }

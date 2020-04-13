@@ -24,30 +24,30 @@ namespace RPI_Software
             serLCD.lcdPrint("Start EKG-måling");
         }
 
-        public string Read()
+        public void Read()
         {
             // Denne metode skal registrere hvilken skærm type der er på display og aflæse denne, hvorefter den aktiverer den valgte metode
             // til det der står på displayet
             if (twist.isPressed() == true)
             {
-                return "hej";
             }
-            /*            switch (_tilstand)
-    {
-        case Tilstand.STARTET:
-            break;
+         /*            switch (_tilstand)
+ {
+     case Tilstand.STARTET:
+         break;
 
-        case Tilstand.STOPPET:
-            _timer.Start();
-            _tilstand = Tilstand.STARTET;
-            break;
-    } */
-            twist.isMoved()
+     case Tilstand.STOPPET:
+         _timer.Start();
+         _tilstand = Tilstand.STARTET;
+         break;
+ } */
+         twist.isMoved();
         }
+
         public void CountDown10()
         {
             //// Create a timer with a two second interval.
-            aTimer = new System.Timers.Timer(2000);
+            //aTimer = new System.Timers.Timer(2000);
             //// Hook up the Elapsed event for the timer. 
             //aTimer.Elapsed += OnTimedEvent;
             //aTimer.AutoReset = true;
@@ -55,7 +55,7 @@ namespace RPI_Software
             // Denne metode er en nedtællingsmetode der skal få displayet til at at indikere at en måling er startet, og brugeren har 10
             // sekunder til at gøre sig klar
             int counter = 10;
-            aTimer.Interval = 1000;
+            //aTimer.Interval = 1000;
 
             serLCD.lcdSetBackLight(255, 255, 0);
             for (int i = 10; i > 0; i--)

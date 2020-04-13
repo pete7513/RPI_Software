@@ -10,7 +10,6 @@ using Data;
 
 namespace Raspberry_Pi_Dot_Net_Core_Console_Application3
 {
-   
     class Program
     {
       static ADC1015 ADC; 
@@ -22,7 +21,7 @@ namespace Raspberry_Pi_Dot_Net_Core_Console_Application3
         static void Main(string[] args)
         {
          initialitiere();
-         string state;
+         string state = "state";
 
          while (1 == 1)
          {
@@ -33,7 +32,7 @@ namespace Raspberry_Pi_Dot_Net_Core_Console_Application3
 
             if (UI_Interface.twist.isPressed() == true) 
             {
-               state = UI_Interface.Read();
+               //state = UI_Interface.Read();
                
                if (state == "start måling")
                {
@@ -54,11 +53,12 @@ namespace Raspberry_Pi_Dot_Net_Core_Console_Application3
          UI_Interface = new Patient_Interface();
          dataConnection = new DataConnection();
 
-         Patient = dataConnection.PatientCPR(EKGID);
+         //Patient = dataConnection.PatientCPR(EKGID);
 
-         maaling = new EKG_Maaling(Patient.PatientName, Patient.CPR, DateTime.Now, null);
+         //maaling = new EKG_Maaling(Patient.PatientName, Patient.CPR, DateTime.Now, null);
 
-         UI_Interface.ShowMenu(Patient.PatientName); 
+         //UI_Interface.ShowMenu(Patient.PatientName); 
+         UI_Interface.ShowMenu("name"); 
       }
 
 

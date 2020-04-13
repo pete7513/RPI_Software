@@ -33,8 +33,9 @@ namespace Data
       {
          try
          {
-            Patient_CPR item = DBaccess.loadPatient();
-            return item;
+            //Patient_CPR item = DBaccess.loadPatient();
+            //return item;
+            return null; 
          }
          catch
          {
