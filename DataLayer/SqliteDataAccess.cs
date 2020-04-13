@@ -8,17 +8,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DTO;
+using Data; 
 
 namespace Data
 {
     public class SqliteDataAccess
     {
-      public SqliteDataAccess()
-      { 
-      
-      }
+  
 
-      public static void EKGMSendt(EKG_Maaling maaling)
+      public void EKGM_lite_Sendt(EKG_Maaling maaling)
       {
          using (IDbConnection cnn = new SQLiteConnection(LoadConnectString()))
          {
@@ -26,7 +24,7 @@ namespace Data
          }
       }
 
-      private static string LoadConnectString(string ID = "Default")
+      private string LoadConnectString(string ID = "Default")
       {
          //Dataccess skal ske i en app config fil, som kun findes i framework what to do?? 
 

@@ -9,13 +9,14 @@ namespace DTO
       public string PatientName { get; set; }
       public string CPR { get; set; }
       public DateTime DateTime { get; set; }
-      public List<byte> EKG_maalingen { get; set; }
+      public List<byte> EKG_Data { get; set; }
 
-      public EKG_Maaling(string patient, DateTime dateTime, List<byte> eKG_maalingen)
+      public EKG_Maaling(string patient, string CPR, DateTime dateTime, List<byte> eKG_maalingen)
       {
-         NamePatient = patient;
+         PatientName = patient;
+         this.CPR = CPR; 
          DateTime = dateTime;
-         EKG_maalingen = eKG_maalingen; 
+         EKG_Data = eKG_maalingen; 
       }
 
    }

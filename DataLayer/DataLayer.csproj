@@ -26,7 +26,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DTO\DTO.csproj" />
-    <ProjectReference Include="..\RPI_Software\RPI_Software.csproj" />
   </ItemGroup>
 
 </Project>

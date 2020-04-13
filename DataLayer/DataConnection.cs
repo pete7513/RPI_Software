@@ -4,32 +4,43 @@ using System.Text;
 using Data;
 using DTO; 
 
-namespace RPI_Software
+namespace Data
 {
-   class DataConnection
+   public class DataConnection
    {
-      private SqlDBDataAccess access; 
+      private SqlDBDataAccess DBaccess;
+      private SqliteDataAccess Liteaccess; 
+
       public DataConnection()
       {
-         access = new SqlDBDataAccess();
+         DBaccess = new SqlDBDataAccess();
+         Liteaccess = new SqliteDataAccess(); 
       }
 
       public void EKGMSendt(EKG_Maaling _Maaling)
       {
-         if (/*internetconetion = true*/)
-            SqlDBDataAccess.//funktion; 
-         else
-            SqliteDataAccess.EKGMSendt(_Maaling);
-
+         try
+         {
+            DBaccess.EKGM_DB_Sendt(_Maaling);
+         }
+         catch
+         {
+            Liteaccess.EKGM_lite_Sendt(_Maaling);
+         }       
       }
 
       public Patient_CPR PatientCPR(string EKGID)
       {
-         access.loadPatient();
-
-         Patient_CPR item = access.loadPatient();
-
-         return item; 
+         try
+         {
+            Patient_CPR item = DBaccess.loadPatient();
+            return item;
+         }
+         catch
+         {
+            Patient_CPR item = null;
+            return item;
+         }
       }
    }
 }

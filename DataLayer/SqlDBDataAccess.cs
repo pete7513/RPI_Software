@@ -5,24 +5,41 @@ using System.Text;
 using DTO; 
 
 
-namespace RPI_Software
+namespace Data
 {
    public class SqlDBDataAccess
    {
-
       public Patient_CPR loadPatient()
       {
+
+
 
          Patient_CPR item = new Patient_CPR(Name, CPR);
 
          return item;
       }
 
+
+
+
       public void EKGM_DB_Sendt(EKG_Maaling _Maaling)
       { 
       
 
       }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
       private SqlConnection OpenConnectionST
       {

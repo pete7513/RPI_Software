@@ -10,15 +10,15 @@ namespace RPI_Software
 {
     public class Patient_Interface
     {
-        SerLCD serLCD = new SerLCD(114);
-        TWIST twist = new TWIST(63);
+        public SerLCD serLCD = new SerLCD(114);
+        public TWIST twist = new TWIST(63);
 
 
-        public void ShowMenu()
+        public void ShowMenu(string navn )
         {
             // Når programmet starter skal denne metode kaldes, den skal tænde display og vise de forskellige menuer på det.
             serLCD.lcdDisplay();
-            serLCD.lcdPrint("Velkommen - programmet starter");
+            serLCD.lcdPrint("Velkommen "+navn+"  - programmet starter");
             Thread.Sleep(5000);
             serLCD.lcdClear();
             serLCD.lcdPrint("Start EKG-måling");
@@ -44,7 +44,7 @@ namespace RPI_Software
     } */
             twist.isMoved()
         }
-        public int CountDown10()
+        public void CountDown10()
         {
             //// Create a timer with a two second interval.
             aTimer = new System.Timers.Timer(2000);
@@ -63,7 +63,7 @@ namespace RPI_Software
                 serLCD.lcdPrint("Ekg-målingen går igang om " + i + " sekunder");
                 Thread.Sleep(1000);
             }
-            return tal;
+       
         }
 
         //private int counter = 60;
@@ -77,19 +77,11 @@ namespace RPI_Software
         //    label1.Text = counter.ToString();
         //}
 
-        public int CountDown50()
+        public void CountDown50(byte tal)
         {
-            // Denne metode er en nedtællingsmetode der skal få displayet til at at indikere at en måling er igang
-            if (CountDown10(0) = true)
-            {
+            // Denne metode er en nedtællingsmetode der skal få displayet til at at indikere at en måling er igang   
                 serLCD.lcdSetBackLight(0, 255, 0);
-                for (int i = 50; i > 0; i--)
-                {
-                    serLCD.lcdPrint("Ekg-målingen er færdig om " + i + " sekunder");
-                    Thread.Sleep(1000);
-                }
-                return 0;
-            }
+                serLCD.lcdPrint("Ekg-målingen er færdig om " + tal + " sekunder");
         }
 
         public void ReadingDone()
