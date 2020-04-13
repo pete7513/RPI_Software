@@ -13,6 +13,10 @@ namespace Data
 {
     public class SqliteDataAccess
     {
+      public SqliteDataAccess()
+      { 
+      
+      }
 
       public static void EKGMSendt(EKG_Maaling maaling)
       {

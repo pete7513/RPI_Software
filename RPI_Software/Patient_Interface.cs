@@ -9,8 +9,8 @@ namespace RPI_Software
 {
     class Patient_Interface
     {
-        SerLCD serLCD = new SerLCD(63);
-        TWIST twist = new TWIST(63);
+        SerLCD serLCD = new SerLCD();
+        TWIST twist = new TWIST(); 
 
         public void ShowMenu()
         {
