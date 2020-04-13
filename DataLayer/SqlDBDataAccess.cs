@@ -2,20 +2,28 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Text;
+using DTO; 
 
 
 namespace RPI_Software
 {
-   class SqlDBDataAccess
+   public class SqlDBDataAccess
    {
+
+      public Patient_CPR loadPatient()
+      {
+
+
+
+         Patient_CPR item = new Patient_CPR(Name, CPR);
+
+         return item;
+      }
 
       private SqlConnection OpenConnectionST
       {
-
          get
-
          {
-
             var con = new SqlConnection(@"Data Source=i4dab.ase.au.dk;Initial Catalog=F17ST2PRJ2OffEKGDatabase;Integrated Security=False;User ID=F17ST2PRJ2OffEKGDatabase;Password=F17ST2PRJ2OffEKGDatabase;Connect Timeout=15;Encrypt=False;TrustServerCertificate=False");
 
             con.Open();
