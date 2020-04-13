@@ -9,7 +9,7 @@ namespace RPI_Software
 {
     class Patient_Interface
     {
-        SerLCD serLCD = new SerLCD(63);
+        SerLCD serLCD = new SerLCD(114);
         TWIST twist = new TWIST(63);
 
         public void ShowMenu()
@@ -22,16 +22,16 @@ namespace RPI_Software
             serLCD.lcdPrint("Start EKG-måling");
         }
 
-        public void Read()
+        public string Read()
         {
             // Denne metode skal registrere hvilken skærm type der er på display og aflæse denne, hvorefter den aktiverer den valgte metode
             // til det der står på displayet
                 if (twist.isPressed() == true)
                 {
-
+                    return serLCD.lcdPrint("Start EKG-måling")
                 }
         }
-        public int CountDown10()
+        public void CountDown10()
         {
             // Denne metode er en nedtællingsmetode der skal få displayet til at at indikere at en måling er startet, og brugeren har 10
             // sekunder til at gøre sig klar
@@ -41,11 +41,11 @@ namespace RPI_Software
                 serLCD.lcdPrint("Ekg-målingen går igang om " + i + " sekunder");
                 Thread.Sleep(1000);
             }
-            return 0;
-
+            CountDown50();
+            ReadingDone();
         }
 
-        public int CountDown50()
+        public void CountDown50()
         {
             // Denne metode er en nedtællingsmetode der skal få displayet til at at indikere at en måling er igang
             serLCD.lcdSetBackLight(0, 255, 0);
@@ -54,9 +54,6 @@ namespace RPI_Software
                 serLCD.lcdPrint("Ekg-målingen er færdig om " + i + " sekunder");
                 Thread.Sleep(1000);
             }
-            serLCD.lcdSetBackLight(0, 0, 0);
-            serLCD.lcdPrint("Ekg-måling færdig");
-            return 0;
         }
 
         public void ReadingDone()
