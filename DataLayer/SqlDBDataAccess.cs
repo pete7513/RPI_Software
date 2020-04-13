@@ -79,9 +79,7 @@ namespace RPI_Software
             // Get your parameters ready                    
 
             cmd.Parameters.AddWithValue("@data", data.ToArray().SelectMany(value => BitConverter.GetBytes(value)).ToArray());
-
             long id = (long)cmd.ExecuteScalar(); //Returns the identity of the new tuple/record  64 bit/8 bytes
-
          }
 
       }
