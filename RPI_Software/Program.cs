@@ -39,7 +39,7 @@ namespace Raspberry_Pi_Dot_Net_Core_Console_Application3
                   UI_Interface.CountDown10(); 
                   maaling.EKG_Data = EKGmaalingCreate();
                   dataConnection.EKGMSendt(maaling);
-                  UI_Interface.ShowMenu(Patient.PatientName) ;
+                  UI_Interface.ActiveMenu();
                }
             }
          }
@@ -58,7 +58,7 @@ namespace Raspberry_Pi_Dot_Net_Core_Console_Application3
          //maaling = new EKG_Maaling(Patient.PatientName, Patient.CPR, DateTime.Now, null);
 
          //UI_Interface.ShowMenu(Patient.PatientName); 
-         UI_Interface.ShowMenu("name"); 
+         UI_Interface.StartMenu("name"); 
       }
 
 
