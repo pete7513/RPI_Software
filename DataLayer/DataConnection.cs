@@ -17,17 +17,25 @@ namespace Data
          Liteaccess = new SqliteDataAccess(); 
       }
 
-      public void EKGMSendt(EKG_Maaling _Maaling)
+      public byte EKGMSendt(EKG_Maaling _Maaling)
       {
          try
          {
             DBaccess.EKGM_DB_Sendt(_Maaling);
+            return 0; 
          }
          catch
          {
             Liteaccess.EKGM_lite_Sendt(_Maaling);
+            return 1; 
          }       
       }
+
+
+
+
+
+
 
       public Patient_CPR PatientCPR(string EKGID)
       {

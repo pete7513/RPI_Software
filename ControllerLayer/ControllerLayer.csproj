@@ -4,4 +4,16 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\DataLayer\DataLayer.csproj" />
+    <ProjectReference Include="..\DTO\DTO.csproj" />
+    <ProjectReference Include="..\RPI_Software\RPI_Software.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="RaspberryCore">
+      <HintPath>..\..\..\..\..\..\RaspberryPi\RaspberryCore.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>

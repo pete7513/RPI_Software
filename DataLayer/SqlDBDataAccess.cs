@@ -14,15 +14,15 @@ namespace Data
 
       }
 
-      //public Patient_CPR loadPatient()
-      //{
+      public Patient_CPR loadPatient()
+      {
 
 
 
-      //   //Patient_CPR item = new Patient_CPR(Name, CPR);
+         //Patient_CPR item = new Patient_CPR(Name, CPR);
 
-      //   return i
-      //}
+         return null; 
+      }
 
 
 
