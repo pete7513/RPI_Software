@@ -9,6 +9,11 @@ namespace Data
 {
    public class SqlDBDataAccess
    {
+      public SqlDBDataAccess()
+      {
+
+      }
+
       //public Patient_CPR loadPatient()
       //{
 

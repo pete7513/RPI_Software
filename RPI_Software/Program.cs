@@ -2,13 +2,12 @@
 using RaspberryPiCore.ADC;
 using RaspberryPiCore.TWIST;
 using RaspberryPiCore.LCD;
-using RPI_Software;
 using System.Collections.Generic;
 using System.Threading;
 using DTO;
-using Data; 
+using Data;
 
-namespace Raspberry_Pi_Dot_Net_Core_Console_Application3
+namespace RPI_Software
 {
     class Program
     {
@@ -21,43 +20,47 @@ namespace Raspberry_Pi_Dot_Net_Core_Console_Application3
         static void Main(string[] args)
         {
          initialitiere();
-         string state = "state";
+         //string state = "state";
 
-         while (1 == 1)
-         {
-            if (UI_Interface.twist.isMoved() == true)
-            { 
-                 
-            }
+         //while (1 == 1)
+         //{
+         //   if (UI_Interface.twist.isMoved() == true)
+         //   { 
+         //      // set count og get cout   
 
-            if (UI_Interface.twist.isPressed() == true) 
-            {
-               //state = UI_Interface.Read();
+
+
+         //   }
+
+         //   if (UI_Interface.twist.isPressed() == true) 
+         //   {
+         //      //state = UI_Interface.Read();
                
-               if (state == "start måling")
-               {
-                  UI_Interface.CountDown10(); 
-                  maaling.EKG_Data = EKGmaalingCreate();
-                  dataConnection.EKGMSendt(maaling);
-                  UI_Interface.ShowMenu(Patient.PatientName) ;
-               }
-            }
-         }
+         //      if (state == "start måling")
+         //      {
+         //         UI_Interface.CountDown10(); 
+         //         maaling.EKG_Data = EKGmaalingCreate();
+         //         dataConnection.EKGMSendt(maaling);
+         //         UI_Interface.ShowMenu(Patient.PatientName) ;
+         //      }
+         //   }
+         //}
 
         }
 
 
       public static void initialitiere()
       {
-         string EKGID = "1011";
+         //string EKGID = "1011";
          UI_Interface = new Patient_Interface();
-         dataConnection = new DataConnection();
+         //dataConnection = new DataConnection();
 
          //Patient = dataConnection.PatientCPR(EKGID);
 
          //maaling = new EKG_Maaling(Patient.PatientName, Patient.CPR, DateTime.Now, null);
 
          //UI_Interface.ShowMenu(Patient.PatientName); 
+
          UI_Interface.ShowMenu("name"); 
       }
 

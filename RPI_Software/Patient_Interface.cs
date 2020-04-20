@@ -13,14 +13,24 @@ namespace RPI_Software
         public SerLCD serLCD = new SerLCD(114);
         public TWIST twist = new TWIST(63);
 
+      public Patient_Interface()
+      {
+
+      }
 
         public void ShowMenu(string navn )
         {
             // Når programmet starter skal denne metode kaldes, den skal tænde display og vise de forskellige menuer på det.
             serLCD.lcdDisplay();
+            Console.WriteLine("Display"); 
+            Thread.Sleep(5000);
+            serLCD.lcdHome();
+            serLCD.lcdGotoXY(0, 1);
+            Console.WriteLine("Velkommen");
             serLCD.lcdPrint("Velkommen "+navn+"  - programmet starter");
             Thread.Sleep(5000);
             serLCD.lcdClear();
+            Console.WriteLine("Startmåling");
             serLCD.lcdPrint("Start EKG-måling");
         }
 
