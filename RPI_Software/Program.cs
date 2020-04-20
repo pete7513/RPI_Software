@@ -36,15 +36,15 @@ namespace RPI_Software
          //   {
          //      //state = UI_Interface.Read();
                
-         //      if (state == "start måling")
-         //      {
-         //         UI_Interface.CountDown10(); 
-         //         maaling.EKG_Data = EKGmaalingCreate();
-         //         dataConnection.EKGMSendt(maaling);
-         //         UI_Interface.ShowMenu(Patient.PatientName) ;
-         //      }
-         //   }
-         //}
+               if (state == "start måling")
+               {
+                  UI_Interface.CountDown10(); 
+                  maaling.EKG_Data = EKGmaalingCreate();
+                  dataConnection.EKGMSendt(maaling);
+                  UI_Interface.ActiveMenu();
+               }
+            }
+         }
 
         }
 
