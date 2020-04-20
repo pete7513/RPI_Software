@@ -33,11 +33,7 @@ namespace Data
 
 
 
-
-
-
-
-      public Patient_CPR PatientCPR(string EKGID)
+      public Patient_CPR getPatientCPR(string EKGID)
       {
          try
          {

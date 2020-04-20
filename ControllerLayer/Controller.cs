@@ -79,8 +79,8 @@ namespace ControllerLayer
       //Initialitering af displayet med navn på patienten, tilhørende EKG måleren. 
       public void initialitiere()
       {
-         // metode til at hente 
-         Patient = dataConnection.PatientCPR(EKGID);
+         // metode til at hente patient informationer - retur værdi DTO patient
+         Patient = dataConnection.getPatientCPR(EKGID);
 
          //Start sekvens vises og hovedmenuen vises efter. 
          Interface.ShowStartMenu(Patient.PatientName);
@@ -149,8 +149,7 @@ namespace ControllerLayer
                Interface.ShowStartMåling();
 
                //Oprettelse af nyt EKG måling opjekt med den nye liste
-               maaling = new EKG_Maaling(Patient.PatientName, Patient.CPR, DateTime.Now, EKGData);
-
+               maaling = new EKG_Maaling(Patient.PatientName, Patient.CPR, DateTime.Now, EKGData); 
                try
                {
                   //Forsendelse af EKG måling og retur værdien er hvilken database som EKG målingen er blevet lagt op i

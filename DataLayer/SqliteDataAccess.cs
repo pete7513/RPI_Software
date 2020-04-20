@@ -28,6 +28,10 @@ namespace Data
          }
       }
 
+
+
+
+
       private string LoadConnectString(string ID = "Default")
       {
          //Dataccess skal ske i en app config fil, som kun findes i framework what to do?? 

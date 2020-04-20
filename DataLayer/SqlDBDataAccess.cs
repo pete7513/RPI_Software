@@ -14,22 +14,17 @@ namespace Data
 
       }
 
+      //Hente informationer omkring den patient som er tilknyttet EKGmåleren.
       public Patient_CPR loadPatient()
       {
-
-
-
-         //Patient_CPR item = new Patient_CPR(Name, CPR);
 
          return null; 
       }
 
 
-
-
       public void EKGM_DB_Sendt(EKG_Maaling _Maaling)
       { 
-      
+    
 
       }
 
