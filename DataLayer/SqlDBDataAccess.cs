@@ -59,11 +59,11 @@ namespace Data
 
       {
 
-         string insertStringParam = @"INSERT INTO EKGDATA (raa_data, ekgmaaleid, samplerate_hz, interval_sec, data_format, bin_eller_tekst, maaleformat_type, start_tid)
+         //string insertStringParam = @"INSERT INTO EKGDATA (raa_data, ekgmaaleid, samplerate_hz, interval_sec, data_format, bin_eller_tekst, maaleformat_type, start_tid)
 
-                                                              OUTPUT INSERTED.ekgdataid  //Får databasen til at returnere værdien for primærnøglen ekgdataid som pga af IDENTITY funktionen generes automatisk af database (Kan ikke skrives fra klienten af)
+         //                                                     OUTPUT INSERTED.ekgdataid  //Får databasen til at returnere værdien for primærnøglen ekgdataid som pga af IDENTITY funktionen generes automatisk af database (Kan ikke skrives fra klienten af)
 
-                                    VALUES(@data, 164, 400, 3600, N'2015-04-27', '1', N'double', CONVERT(DATETIME, '2015-04-27 12:34:43', 102))"; //Alle værdier pånær raa_data er her kodet helt specifikt
+         //                           VALUES(@data, 164, 400, 3600, N'2015-04-27', '1', N'double', CONVERT(DATETIME, '2015-04-27 12:34:43', 102))"; //Alle værdier pånær raa_data er her kodet helt specifikt
 
 
 

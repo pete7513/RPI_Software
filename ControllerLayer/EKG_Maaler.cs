@@ -14,18 +14,16 @@ using RaspberryPiCore.TWIST;
 
 namespace ControllerLayer
 {
-   class Controller
+   class EKG_Maaler
    {
-      /// Denne program klassen kan have initialitere og opret create EKGMåling 
-      /// prgramklassen skal blive i Presentationslayet
-
+      #region Objekt referencer og atributter
       // UI og DB-UI <<Boundary>>
-      Patient_Interface Interface;
-      DataConnection dataConnection;
+      private Patient_Interface Interface;
+      private DataConnection dataConnection;
 
       // DTO Klasser <<Domain>>
-      EKG_Maaling maaling;
-      Patient_CPR Patient;
+      private EKG_Maaling maaling;
+      private Patient_CPR Patient;
 
       // RPI komponenter <<Boundary>>
       private TWIST endcoder;
@@ -36,12 +34,13 @@ namespace ControllerLayer
       short StartMaaling;
       short Time;
       short Historik;
-      List<byte> EKGData; 
-
-
+      short MaksCount;
+      short Port; 
+      List<byte> EKGData;
+      #endregion 
 
       //Konstruktor med oprettelse af relevante referencer og 
-      public Controller()
+      public EKG_Maaler()
       {
          Interface = new Patient_Interface();
          dataConnection = new DataConnection();
@@ -49,23 +48,27 @@ namespace ControllerLayer
          ADC = new ADC1015(); 
          Patient = new Patient_CPR("NN", "NCPR");
 
-         endcoder.setLimit(2);
-
          //Atribut værdier oprettes
          EKGID = "1011";
          StartMaaling = 0;
          Time = 1;
          Historik = 2;
+         MaksCount = 2;
+         Port = 0; 
+
+         endcoder.setLimit(MaksCount);
+
+       
       }
 
       // Her kører programmet i
       public void Main()
       {
-         initialitiere();
+         initialisere();
 
          while (endcoder.getCount() < 5)
          {
-            if (endcoder.isPressed() == true)
+            if (endcoder.isMoved() == true)
             {
                IsMoved();
             }
@@ -77,7 +80,7 @@ namespace ControllerLayer
       }
 
       //Initialitering af displayet med navn på patienten, tilhørende EKG måleren. 
-      public void initialitiere()
+      public void initialisere()
       {
          // metode til at hente patient informationer - retur værdi DTO patient
          Patient = dataConnection.getPatientCPR(EKGID);
@@ -133,39 +136,8 @@ namespace ControllerLayer
             //Dette er hvis endconderen bliver trykket på
             if (endcoder.getCount() == StartMaaling) //0
             {
-               //Set backlightColor = Gul
-               Interface.screenColor(255, 255, 0); 
-
-               //Påbegynder nedtælling 
-               Interface.CountDown10();
-
-               //Set backlightColor = Grøn
-               Interface.screenColor(0, 255, 0);
-
-               //Oprettrelse af en EKG data liste
-               EKGData = EKGmaalingCreate();
-
-               //menuen vises 
-               Interface.ShowStartMåling();
-
-               //Oprettelse af nyt EKG måling opjekt med den nye liste
-               maaling = new EKG_Maaling(Patient.PatientName, Patient.CPR, DateTime.Now, EKGData); 
-               try
-               {
-                  //Forsendelse af EKG måling og retur værdien er hvilken database som EKG målingen er blevet lagt op i
-                  byte besked = dataConnection.EKGMSendt(maaling);
-                  Interface.Besked(besked);
-               }
-               catch 
-               {
-                  Interface.Besked(2); 
-               }
-
-               //Beskeden vises på displayet et øjeblik 
-               Thread.Sleep(8000); 
-
-               //menuen vises 
-               Interface.ShowStartMåling();
+               //Metode for sig
+               StartMåling();
             }
 
             else if (endcoder.getCount() == Time) //1
@@ -182,6 +154,44 @@ namespace ControllerLayer
          {
             Console.WriteLine("ERROR - Endcoder pressed fail"); 
          }
+      }
+
+      //Metoden er den metode som bliver kaldt når der bliver trykket "start måling" på displayet
+      public void StartMåling()
+      {
+         //Set backlightColor = Gul
+         Interface.ScreenColor(255, 255, 0);
+
+         //Påbegynder nedtælling 
+         Interface.CountDown10();
+
+         //Set backlightColor = Grøn
+         Interface.ScreenColor(0, 255, 0);
+
+         //Oprettrelse af en EKG data liste
+         EKGData = EKGmaalingCreate();
+
+         //menuen vises 
+         Interface.ShowStartMåling();
+
+         //Oprettelse af nyt EKG måling opjekt med den nye liste
+         maaling = new EKG_Maaling(Patient.PatientName, Patient.CPR, DateTime.Now, EKGData);
+         try
+         {
+            //Forsendelse af EKG måling og retur værdien er hvilken database som EKG målingen er blevet lagt op i
+            byte besked = dataConnection.EKGMSendt(maaling);
+            Interface.Besked(besked);
+         }
+         catch
+         {
+            Interface.Besked(2);
+         }
+
+         //Beskeden vises på displayet et øjeblik 
+         Thread.Sleep(8000);
+
+         //menuen vises 
+         Interface.ShowStartMåling();
       }
 
       //Metoden som opretter en EKGmåling, samtidig med informationsskrivning på displayet. 
@@ -218,5 +228,6 @@ namespace ControllerLayer
          Interface.ReadingDone();
          return byteliste;
       }
+
    }
 }
