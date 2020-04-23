@@ -15,7 +15,7 @@ namespace Data
       }
 
       //Hente informationer omkring den patient som er tilknyttet EKGmåleren.
-      public Patient_CPR loadPatient()
+      public Patient_CPR loadPatient(string EKGID)
       {
 
          return null; 

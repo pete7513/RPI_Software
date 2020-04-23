@@ -80,10 +80,11 @@ namespace RPI_Software
          }
       }
 
-      public void CountDown50(byte tal)
+      public void CountDown50()
       {
          // Denne metode er en nedtællingsmetode der skal få displayet til at at indikere at en måling er igang   
-         Display.lcdPrint("Ekg-målingen er færdig om " + tal + " sekunder");
+         Display.lcdPrint("Ekg-målingen er færdig om 50 sekunder");
+         Display.lcdPrint("Du bedes venligts forholde dig i ro");
       }
 
       public void ScreenColor(byte red, byte green, byte blue)
@@ -106,7 +107,7 @@ namespace RPI_Software
          if (beskedNummer == 2)
          {
             Display.lcdDisplay();
-            Display.lcdPrint("Din måling er ikke afsendt til den online Data base");
+            Display.lcdPrint("Din måling er ikke afsendt til den online eller den lokale Data base");
          }
       }
 
