@@ -36,7 +36,7 @@ namespace RPI_Software
          Thread.Sleep(500);
          Display.lcdGotoXY(0, 1);
          Display.lcdPrint("Start EKG-måling");
-         Display.lcdGotoXY(0, 2 =;
+         Display.lcdGotoXY(0, 2);
          Display.lcdPrint("Kl. " + DateTime.Now.ToShortTimeString());
          Display.lcdGotoXY(0, 3);
          Display.lcdPrint("Vis historik");

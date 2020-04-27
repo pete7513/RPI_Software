@@ -19,7 +19,6 @@ namespace Data
 
       }
   
-
       public void EKGM_lite_Sendt(EKG_Maaling maaling)
       {
          using (IDbConnection cnn = new SQLiteConnection(LoadConnectString()))
@@ -27,10 +26,6 @@ namespace Data
             cnn.Execute("insert into Person (FirstName, LastName, BIT) values (@FirstName, @LastName, @array)", maaling);
          }
       }
-
-
-
-
 
       private string LoadConnectString(string ID = "Default")
       {

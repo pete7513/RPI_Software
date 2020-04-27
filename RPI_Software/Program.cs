@@ -14,7 +14,7 @@ namespace RPI_Software
    class Program // Controller klasse 
    {
       #region Objekt referencer og atributter
-      // UI og DB-UI <<Boundary>>
+      // UI <<Boundary >> og Logic <<Controller>>
       private static Patient_Interface Interface;
       private static Logic Logic; 
 
@@ -35,6 +35,9 @@ namespace RPI_Software
       static short Port;
       static List<byte> EKGData;
 
+      #endregion
+
+      //THE MAIN PROGRAM 
       static void Main(string[] args)
       {
          initialisere();
@@ -52,8 +55,7 @@ namespace RPI_Software
          }
       }
 
-
-
+      //Metoden starter displayet op og henter patientinformationer. 
       static void initialisere()
       {
         
@@ -69,7 +71,6 @@ namespace RPI_Software
          Interface.ShowStartMenu(Patient.PatientName);
          Interface.ShowStartMåling();
       }
-
 
       //Metoden for hvis Endcoderen er drejet
       static void IsMoved()
@@ -167,7 +168,6 @@ namespace RPI_Software
          //Forsendelse af EKG måling og retur værdien er hvilken database som EKG målingen er blevet lagt op i
          byte besked = Logic.EKGMSendt(maaling);
          Interface.Besked(besked);
-     
 
          //Beskeden vises på displayet et øjeblik 
          Thread.Sleep(8000);
@@ -176,9 +176,9 @@ namespace RPI_Software
          Interface.ShowStartMåling();
       }
 
-
-
-
-
+      static void History()
+      { 
+      
+      }
    }
 }

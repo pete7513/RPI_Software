@@ -9,6 +9,7 @@ namespace Data
 {
    public class SqlDBDataAccess
    {
+      //Kontruktor for den online database
       public SqlDBDataAccess()
       {
 
@@ -21,7 +22,7 @@ namespace Data
          return null; 
       }
 
-
+      //Skal kunne uploade en EKG måling, som er tilknyttet patienten. 
       public void EKGM_DB_Sendt(EKG_Maaling _Maaling)
       { 
     

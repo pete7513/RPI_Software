@@ -60,6 +60,7 @@ namespace LogicLayer
          endcoder.setLimit(MaksCount);
       }
 
+      // Metoden skal returnere det patient_CPR objekt som datalaget returnere. 
       public Patient_CPR getpatientCPR()
       {
          Patient = DBaccess.loadPatient(EKGID);
@@ -70,10 +71,7 @@ namespace LogicLayer
       public List<byte> EKGmaalingCreate()
       {
          List<byte> byteliste = new List<byte>();
-         int malingtæller = 0;
 
-
-         byte nedtællingstal = 50;
          byte periode = 50;
          byte samplerate = 20;
 
@@ -88,21 +86,13 @@ namespace LogicLayer
             byteliste.Add(sample);
 
             Thread.Sleep(1000 / (Convert.ToInt32(samplerate) - 4));
-            malingtæller++;
-
-            if (malingtæller == 20)
-            {
-               --nedtællingstal;
-               Interface.CountDown50(nedtællingstal);
-               malingtæller = 0;
-            }
-
          }
 
          return byteliste;
       }
 
-
+      //Metoden skal sende en EKGmåling, og returnere en specifik byte, alt efter - 
+      // om metoden kunne sende en EKG målingen eller ej.
       public byte EKGMSendt(EKG_Maaling _Maaling)
       {
 
@@ -126,6 +116,8 @@ namespace LogicLayer
             }
          }
       }
+
+
    }
 }
 
