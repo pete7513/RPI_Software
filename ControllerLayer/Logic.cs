@@ -7,8 +7,7 @@ using Data;
 using Dapper;
 using RaspberryPiCore.ADC;
 using RaspberryPiCore.i2cdotnet;
-using RaspberryPiCore.LCD;
-using RaspberryPiCore.TWIST;
+
 
 
 namespace LogicLayer
@@ -27,7 +26,6 @@ namespace LogicLayer
       private Patient_CPR Patient;
 
       // RPI komponenter <<Boundary>>
-      private TWIST endcoder;
       private ADC1015 ADC;
 
       //Atributter 
@@ -56,8 +54,6 @@ namespace LogicLayer
          Historik = 2;
          MaksCount = 2;
          Port = 0;
-
-         endcoder.setLimit(MaksCount);
       }
 
       // Metoden skal returnere det patient_CPR objekt som datalaget returnere. 

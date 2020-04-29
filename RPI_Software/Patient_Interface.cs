@@ -19,9 +19,9 @@ namespace RPI_Software
       {
          // Når programmet starter skal denne metode kaldes, den skal tænde display og vise de forskellige menuer på det.
          Display.lcdDisplay();
+         
          Console.WriteLine("Display");
          Thread.Sleep(5000);
-         Display.lcdHome();
          Display.lcdGotoXY(0, 1);
          Console.WriteLine("Velkommen");
          Display.lcdPrint("Velkommen " + navn + "  - programmet starter");

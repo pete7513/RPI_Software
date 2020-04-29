@@ -42,16 +42,12 @@ namespace RPI_Software
       {
          initialisere();
 
-         while (endcoder.getCount() < 5)
+         while (1 == 1)
          {
-            if (endcoder.isMoved() == true)
-            {
                IsMoved();
-            }
-            if (endcoder.isPressed() == true)
-            {
+
+            if (endcoder.isPressed()) 
                IsPressed();
-            }
          }
       }
 
@@ -62,13 +58,14 @@ namespace RPI_Software
          //Objekter oprettes.
          Interface = new Patient_Interface();
          endcoder = new TWIST();
-         Logic = new Logic();
+         //Logic = new Logic();
 
          // metode til at hente patient informationer - retur værdi DTO patient
-         Patient = Logic.getpatientCPR(); 
+         //Patient = Logic.getpatientCPR();
+         endcoder.setCount(0); 
 
          //Start sekvens vises og hovedmenuen vises efter. 
-         Interface.ShowStartMenu(Patient.PatientName);
+         Interface.ShowStartMenu("Torben"/*Patient.PatientName*/);
          Interface.ShowStartMåling();
       }
 
@@ -81,27 +78,32 @@ namespace RPI_Software
             // Skal muligvis ændres til states // Switch
             if (endcoder.getCount() == -1) //-1
             {
-               endcoder.setCount(-1);
+               endcoder.setCount(0);
                Interface.ShowStartMåling();
+               Console.WriteLine("-1"); 
             }
             else if (endcoder.getCount() == StartMaaling) //0
             {
                Interface.ShowStartMåling();
+               Console.WriteLine("0");
             }
 
             else if (endcoder.getCount() == Time) //1
             {
                Interface.ShowTime();
+               Console.WriteLine("1");
             }
 
             else if (endcoder.getCount() == Historik) //2
             {
                Interface.ShowHistory();
+               Console.WriteLine("2");
             }
             else if (endcoder.getCount() == 3) //3
             {
                endcoder.setCount(2);
                Interface.ShowHistory();
+               Console.WriteLine("3");
             }
          }
          catch
