@@ -13,17 +13,20 @@ namespace RPI_Software
       public Patient_Interface()
       {
          Display = new SerLCD();
+         Display.lcdNoDisplay();
       }
 
       public void ShowStartMenu(string navn)
       {
          // Når programmet starter skal denne metode kaldes, den skal tænde display og vise de forskellige menuer på det.
          Display.lcdDisplay();
-         
+         Display.lcdClear();
+         Display.lcdHome();
+
          Console.WriteLine("Display");
          Thread.Sleep(5000);
-         Display.lcdGotoXY(0, 1);
          Console.WriteLine("Velkommen");
+         Display.lcdGotoXY(0, 1);
          Display.lcdPrint("Velkommen " + navn + "  - programmet starter");
          Thread.Sleep(5000);
          Display.lcdClear();
@@ -33,6 +36,9 @@ namespace RPI_Software
       {
          // Når programmet har lavet en måling kaldes den metode, som viser en skærm med den 
          Display.lcdDisplay();
+         Display.lcdClear();
+         Display.lcdHome();
+
          Thread.Sleep(500);
          Display.lcdGotoXY(0, 1);
          Display.lcdPrint("Start EKG-måling");
@@ -46,6 +52,8 @@ namespace RPI_Software
       {
          // En metode der kan vise brugeren dato og klokken (ekstra)
          Display.lcdDisplay();
+         Display.lcdClear();
+         Display.lcdHome();
          Thread.Sleep(500);
 
          Display.lcdGotoXY(0, 0);
@@ -60,6 +68,8 @@ namespace RPI_Software
       {
          // En metode der skal kunne vise brugeren tidspunktet på hvornår han har lavet en EKG-måling
          Display.lcdDisplay();
+         Display.lcdClear();
+         Display.lcdHome();
          Thread.Sleep(500);
 
          Display.lcdGotoXY(0, 0);
