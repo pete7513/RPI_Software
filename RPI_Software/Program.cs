@@ -180,7 +180,15 @@ namespace RPI_Software
 
       static void History()
       { 
-      
+            /* SELECT TOP 3 *
+        FROM TableName
+        WHERE Kolonnenavn = krav
+        ORDER BY Dato DESC;
+        
+        Query der vælger de 3 nyeste data, og skriver den nyeste øverst og den ældste nederst.      
+             */
+
+        
       }
    }
 }
