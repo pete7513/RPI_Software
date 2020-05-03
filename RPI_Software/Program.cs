@@ -7,7 +7,7 @@ using System.Threading;
 using DTO;
 using LogicLayer;
 
-
+// DebugAdapterHost.Launch /LaunchJson:"C:\Users\asbjo\source\repos\RPI_Software\RPI_Software\AFolder\launch.json" /EngineGuid:541B8A8A-6081-4506-9F0A-1CE771DEBC04 
 
 namespace RPI_Software
 {
@@ -27,13 +27,13 @@ namespace RPI_Software
       private static ADC1015 ADC;
 
       //Atributter 
-      static string EKGID;
-      static short StartMaaling;
-      static short Time;
-      static short Historik;
+      static short startMaaling = 0;
+      static short Time = 1;
+      static short Historik = 2;
       static short MaksCount;
-      static short Port;
-      static List<byte> EKGData;
+      static short turn = 0;
+      //static List<byte> EKGData;
+      static double[] EKGData;
 
       #endregion
 
@@ -44,9 +44,18 @@ namespace RPI_Software
 
          while (1 == 1)
          {
+            
+            if (turn == endcoder.getCount())
+            {
+              
+            }
+            else
+            {
+               turn = endcoder.getCount();
                IsMoved();
+            }
 
-            if (endcoder.isPressed()) 
+            if (endcoder.isPressed() == true) 
                IsPressed();
          }
       }
@@ -58,13 +67,15 @@ namespace RPI_Software
          //Objekter oprettes.
          Interface = new Patient_Interface();
          endcoder = new TWIST();
-         //Logic = new Logic();
+         Logic = new Logic();
 
          // metode til at hente patient informationer - retur værdi DTO patient
          //Patient = Logic.getpatientCPR();
-         endcoder.setCount(0); 
+         endcoder.setCount(0);
 
-         //Start sekvens vises og hovedmenuen vises efter. 
+         //Start sekvens vises og hovedmenuen vises efter.
+         Interface.ScreenColor(255, 0, 0); 
+
          Interface.ShowStartMenu("Torben"/*Patient.PatientName*/);
          Interface.ShowStartMåling();
       }
@@ -82,7 +93,7 @@ namespace RPI_Software
                Interface.ShowStartMåling();
                Console.WriteLine("-1"); 
             }
-            else if (endcoder.getCount() == StartMaaling) //0
+            else if (endcoder.getCount() == startMaaling) //0
             {
                Interface.ShowStartMåling();
                Console.WriteLine("0");
@@ -118,10 +129,10 @@ namespace RPI_Software
          try
          {
             //Dette er hvis endconderen bliver trykket på
-            if (endcoder.getCount() == StartMaaling) //0
+            if (endcoder.getCount() == startMaaling) //0
             {
                //Metode for sig
-               StartMåling();
+               StartMaaling();
             }
 
             else if (endcoder.getCount() == Time) //1
@@ -141,7 +152,7 @@ namespace RPI_Software
       }
 
       //Metoden er den metode som bliver kaldt når der bliver trykket "start måling" på displayet
-      static void StartMåling()
+      static void StartMaaling()
       {
          //Set backlightColor = Gul
          Interface.ScreenColor(255, 255, 0);
@@ -180,15 +191,7 @@ namespace RPI_Software
 
       static void History()
       { 
-            /* SELECT TOP 3 *
-        FROM TableName
-        WHERE Kolonnenavn = krav
-        ORDER BY Dato DESC;
-        
-        Query der vælger de 3 nyeste data, og skriver den nyeste øverst og den ældste nederst.      
-             */
-
-        
+           
       }
    }
 }

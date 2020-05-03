@@ -17,7 +17,6 @@ namespace LogicLayer
       #region Objekt referencer og atributter
       // UI og DB-UI <<Boundary>>
 
-      private DataConnection dataConnection;
       private SqlDBDataAccess DBaccess;
       private SqliteDataAccess Liteaccess;
 
@@ -35,7 +34,8 @@ namespace LogicLayer
       short Historik;
       short MaksCount;
       short Port;
-      List<byte> EKGData;
+      //List<byte> EKGData;
+      double[] EKGData; 
       #endregion 
 
       //Konstruktor med oprettelse af relevante referencer og 
@@ -49,10 +49,6 @@ namespace LogicLayer
 
          //Atribut værdier oprettes
          EKGID = "1011";
-         StartMaaling = 0;
-         Time = 1;
-         Historik = 2;
-         MaksCount = 2;
          Port = 0;
       }
 
@@ -64,9 +60,10 @@ namespace LogicLayer
       }
 
       //Metoden som opretter en EKGmåling, samtidig med informationsskrivning på displayet. 
-      public List<byte> EKGmaalingCreate()
+      public double[] /*List<byte>*/ EKGmaalingCreate()
       {
-         List<byte> byteliste = new List<byte>();
+         //List<byte> byteliste = new List<byte>();
+         EKGData = new double[1100];
 
          byte periode = 50;
          byte samplerate = 20;
@@ -74,24 +71,24 @@ namespace LogicLayer
          //antalMaalinger er antallet af målinger som ekgmåleren tager over perioden på 50 sekunder. 
          int AntalMaalinger = periode * samplerate;
 
-
          for (int i = 0; i < AntalMaalinger; i++)
          {
-            byte sample = 0;
-            sample = Convert.ToByte((ADC.readADC_SingleEnded(0) / 2048.0) * 6.144);
-            byteliste.Add(sample);
+            double sample = 0;
+            sample = Convert.ToDouble((ADC.readADC_SingleEnded(0) / 2048.0) * 6.144);
+            EKGData[i] = sample; 
+            //byteliste.Add(sample);
 
             Thread.Sleep(1000 / (Convert.ToInt32(samplerate) - 4));
          }
 
-         return byteliste;
+         return EKGData; 
+         //return byteliste;
       }
 
       //Metoden skal sende en EKGmåling, og returnere en specifik byte, alt efter - 
       // om metoden kunne sende en EKG målingen eller ej.
       public byte EKGMSendt(EKG_Maaling _Maaling)
       {
-
          try
          {
             DBaccess.EKGM_DB_Sendt(_Maaling);
