@@ -32,7 +32,6 @@ namespace Data
          try
          {
             connection.Open();
-
             sql = "Select navn from dbo.EKGPatient where EKGID = " + EKGID;
 
             command = new SqlCommand(sql, connection);
