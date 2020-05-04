@@ -34,8 +34,7 @@ namespace LogicLayer
       short Historik;
       short MaksCount;
       short Port;
-      DateTime Dato;
-        string CPR;
+      List<DateTime> Dato;
 
       //List<byte> EKGData;
       double[] EKGData; 
@@ -49,7 +48,7 @@ namespace LogicLayer
 
          ADC = new ADC1015();
          Patient = new Patient_CPR("NN", "NCPR");
-         Dato = new DateTime();
+         Dato = new List<DateTime>();
 
          //Atribut værdier oprettes
          EKGID = "1011";
@@ -114,9 +113,9 @@ namespace LogicLayer
          }
       }
 
-      public DateTime historik()
+      public List<DateTime> historik(string cpr)
       {
-            Dato = DBaccess.loadHistorik(CPR);
+            Dato = DBaccess.loadHistorik(cpr);
             return Dato;
         }
 

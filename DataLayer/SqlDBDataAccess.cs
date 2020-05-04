@@ -18,7 +18,7 @@ namespace Data
       private EKG_Maaling maaling;
       private Patient_CPR Patient;
 
-        private DateTime historikDato;
+     private List<DateTime> historikDato;
 
 
       //Kontruktor for den online database
@@ -53,10 +53,10 @@ namespace Data
          }
       }
 
-      public DateTime loadHistorik(string cpr)
+      public List<DateTime> loadHistorik(string cpr)
       {
          connection.Open();
-         historikDato = new DateTime();
+         historikDato = new List<DateTime>();
          sql = "SELECT TOP 3 tidsstempel FROM EKGDATA WHERE CPR = '"+cpr+"' ORDER BY Dato DESC;";
 
          using (command = new SqlCommand(sql, connection))
@@ -66,7 +66,7 @@ namespace Data
                 {
                     if (dataReader["CPR"].ToString() == cpr)
                     {
-                        historikDato = Convert.ToDateTime(dataReader["tidsstempel"]);
+                        historikDato.Add(Convert.ToDateTime(dataReader["tidsstempel"]));
                     }
                 }
             }
