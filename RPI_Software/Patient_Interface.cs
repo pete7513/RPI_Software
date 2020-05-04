@@ -129,5 +129,13 @@ namespace RPI_Software
          Thread.Sleep(8000);
       }
 
-   }
+        public void ShowHistorik()
+        {
+            // Denne metode skal få displayet til at indikere at måligen er slut.
+            Display.lcdClear();
+            Display.lcdPrint("Ekg-måling færdig");
+            Thread.Sleep(8000);
+        }
+
+    }
 }
