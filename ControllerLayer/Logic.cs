@@ -34,14 +34,13 @@ namespace LogicLayer
       short Historik;
       short MaksCount;
       short Port;
-      DateTime Dato;
-        string CPR;
+      List<DateTime> Dato;
 
       //List<byte> EKGData;
       double[] EKGData; 
       #endregion 
 
-      //Konstruktor med oprettelse af relevante referencer og 
+      //Konstruktor med oprettelse af relevante referencer 
       public Logic()
       {
          DBaccess = new SqlDBDataAccess();
@@ -49,12 +48,12 @@ namespace LogicLayer
 
          ADC = new ADC1015();
          Patient = new Patient_CPR("NN", "NCPR");
-         Dato = new DateTime();
-
+        
          //Atribut værdier oprettes
          EKGID = "1011";
          Port = 0;
-      }
+         Dato = new List<DateTime>();
+        }
 
       // Metoden skal returnere det patient_CPR objekt som datalaget returnere. 
       public Patient_CPR getpatientCPR()
@@ -113,9 +112,10 @@ namespace LogicLayer
          }
       }
 
-      public DateTime historik()
+        // Metoden skal returnere det objekt som metoden loadHistorik() returnerer i datalaget. 
+        public List<DateTime> historik(string cpr)
       {
-            Dato = DBaccess.loadHistorik(CPR);
+            Dato = DBaccess.loadHistorik(cpr);
             return Dato;
         }
 

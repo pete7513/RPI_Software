@@ -125,12 +125,12 @@ namespace RPI_Software
          Thread.Sleep(8000);
       }
 
-        public void ShowHistorik()
+        public void ShowHistorik(List<DateTime> dato)
         {
-            // Denne metode skal få displayet til at indikere at måligen er slut.
+            // Denne metode skal få displayet til at vise de 3 sidste målinger
             Display.lcdClear();
-            Display.lcdPrint("Ekg-måling færdig");
-            Thread.Sleep(8000);
+            Display.lcdGotoXY(0, 0);
+            Display.lcdPrint(dato.ToString());  
         }
 
     }

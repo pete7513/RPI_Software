@@ -34,6 +34,7 @@ namespace RPI_Software
       static short turn = 0;
       //static List<byte> EKGData;
       static double[] EKGData;
+        static List<DateTime> history;
 
       #endregion
 
@@ -186,9 +187,10 @@ namespace RPI_Software
          Interface.ShowStartMåling();
       }
 
-      static void History()
-      { 
-         
+      static void History(string CPR)
+      {
+            history = Logic.historik(CPR);
+            Interface.ShowHistorik(history);
       }
    }
 }
