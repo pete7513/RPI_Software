@@ -43,18 +43,16 @@ namespace RPI_Software
          initialisere();
 
          while (1 == 1)
-         {
-            
+         {            
             if (turn == endcoder.getCount())
             {
-              
+               Console.WriteLine("00");
             }
             else
             {
                turn = endcoder.getCount();
                IsMoved();
             }
-
             if (endcoder.isPressed() == true) 
                IsPressed();
          }
@@ -63,7 +61,6 @@ namespace RPI_Software
       //Metoden starter displayet op og henter patientinformationer. 
       static void initialisere()
       {
-        
          //Objekter oprettes.
          Interface = new Patient_Interface();
          endcoder = new TWIST();
