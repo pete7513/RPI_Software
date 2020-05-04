@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Text;
-using System.Data.SqlClient;
 using DTO;
 using System.Linq;
 
@@ -17,7 +16,9 @@ namespace Data
       private SqlDataReader dataReader;
 
       private EKG_Maaling maaling;
-      private Patient_CPR Patient; 
+      private Patient_CPR Patient;
+
+        private DateTime historikDato;
 
 
       //Kontruktor for den online database
@@ -51,6 +52,28 @@ namespace Data
          }
       }
 
+      public DateTime loadHistorik(string cpr)
+      {
+         connection.Open();
+         historikDato = new DateTime();
+         sql = "SELECT TOP 3 tidsstempel FROM EKGDATA WHERE CPR = '"+cpr+"' ORDER BY Dato DESC;";
+
+         using (command = new SqlCommand(sql, connection))
+         {
+                dataReader = command.ExecuteReader();
+                while (dataReader.Read())
+                {
+                    if (dataReader["CPR"].ToString() == cpr)
+                    {
+                        historikDato = Convert.ToDateTime(dataReader["tidsstempel"]);
+                    }
+                }
+            }
+         connection.Close();
+         return historikDato;
+      }
+
+
       //Skal kunne uploade en EKG måling, som er tilknyttet patienten. 
       public void EKGM_DB_Sendt(EKG_Maaling _Maaling)
       {
@@ -71,21 +94,6 @@ namespace Data
          }
          connection.Close();
       }
-
-      
-
-
-
-
-
-
-
-
-
-
-
-
-
 
       //private SqlConnection OpenConnectionST
       //{
