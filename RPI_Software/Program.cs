@@ -27,14 +27,14 @@ namespace RPI_Software
       private static ADC1015 ADC;
 
       //Atributter 
-      static short startMaaling = 0;
-      static short Time = 1;
-      static short Historik = 2;
-      static short MaksCount;
-      static short turn = 0;
+      private static short startMaaling = 0;
+      private static short Time = 1;
+      private static short Historik = 2;
+      private static short MaksCount;
+      private static short turn = 0;
       //static List<byte> EKGData;
-      static double[] EKGData;
-        static List<DateTime> history;
+      private static double[] EKGData;
+      private static List<DateTime> history;
 
       #endregion
 
