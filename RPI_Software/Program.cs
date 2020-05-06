@@ -142,7 +142,7 @@ namespace RPI_Software
 
             else if (endcoder.getCount() == Historik) //2
             {
-               // Her skal skrives noget kode ift. at kunne vise en historik. 
+               History(Patient.CPR); 
             }
          }
          catch
@@ -189,6 +189,7 @@ namespace RPI_Software
          Interface.ShowStartMåling();
       }
 
+      //Metoden er den metode som bliver kaldt når der bliver trykket "Vis histrotik" på displayet
       static void History(string CPR)
       {
             history = Logic.historik(CPR);

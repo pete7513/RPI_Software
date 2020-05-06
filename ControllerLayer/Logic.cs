@@ -63,9 +63,8 @@ namespace LogicLayer
       }
 
       //Metoden som opretter en EKGmåling, samtidig med informationsskrivning på displayet. 
-      public double[] /*List<byte>*/ EKGmaalingCreate()
+      public double[] EKGmaalingCreate()
       {
-         //List<byte> byteliste = new List<byte>();
          EKGData = new double[1100];
 
          byte periode = 50;
@@ -79,12 +78,11 @@ namespace LogicLayer
             double sample = 0;
             sample = Convert.ToDouble((ADC.readADC_SingleEnded(0) / 2048.0) * 6.144);
             EKGData[i] = sample; 
-            //byteliste.Add(sample);
+       
 
             Thread.Sleep(1000 / (Convert.ToInt32(samplerate) - 4));
          }
          return EKGData; 
-         //return byteliste;
       }
 
       //Metoden skal sende en EKGmåling, og returnere en specifik byte, alt efter - 
@@ -112,14 +110,12 @@ namespace LogicLayer
          }
       }
 
-        // Metoden skal returnere det objekt som metoden loadHistorik() returnerer i datalaget. 
-        public List<DateTime> historik(string cpr)
+      // Metoden skal returnere det objekt som metoden loadHistorik() returnerer i datalaget. 
+      public List<DateTime> historik(string cpr)
       {
             Dato = DBaccess.loadHistorik(cpr);
             return Dato;
         }
-
-
    }
 }
 
