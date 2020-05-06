@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DTO", "DTO\DTO.csproj", "{E
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LogicLayer", "ControllerLayer\LogicLayer.csproj", "{9C623B33-F5B6-4C54-A584-96737D5DEA9D}"
 EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "EKGDataBase", "..\..\..\OneDrive - Aarhus Universitet\2 Semester\Projekt 2\EKGDataBase\EKGDataBase\EKGDataBase.sqlproj", "{19DDE759-4049-4E9E-A3E1-6EED1CEAD582}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,12 @@ Global
 		{9C623B33-F5B6-4C54-A584-96737D5DEA9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9C623B33-F5B6-4C54-A584-96737D5DEA9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9C623B33-F5B6-4C54-A584-96737D5DEA9D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{19DDE759-4049-4E9E-A3E1-6EED1CEAD582}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19DDE759-4049-4E9E-A3E1-6EED1CEAD582}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19DDE759-4049-4E9E-A3E1-6EED1CEAD582}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{19DDE759-4049-4E9E-A3E1-6EED1CEAD582}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19DDE759-4049-4E9E-A3E1-6EED1CEAD582}.Release|Any CPU.Build.0 = Release|Any CPU
+		{19DDE759-4049-4E9E-A3E1-6EED1CEAD582}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

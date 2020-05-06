@@ -70,13 +70,13 @@ namespace RPI_Software
          Logic = new Logic();
 
          // metode til at hente patient informationer - retur værdi DTO patient
-         //Patient = Logic.getpatientCPR();
+         Patient = Logic.getpatientCPR();
          endcoder.setCount(0);
 
          //Start sekvens vises og hovedmenuen vises efter.
          Interface.ScreenColor(255, 0, 0); 
 
-         Interface.ShowStartMenu("Torben"/*Patient.PatientName*/);
+         Interface.ShowStartMenu(Patient.PatientName);
          Interface.ShowStartMåling();
       }
 
