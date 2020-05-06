@@ -83,7 +83,6 @@ namespace LogicLayer
 
             Thread.Sleep(1000 / (Convert.ToInt32(samplerate) - 4));
          }
-
          return EKGData; 
          //return byteliste;
       }

@@ -43,11 +43,13 @@ namespace RPI_Software
       {
          initialisere();
 
+         StartMaaling(); 
+
          while (1 == 1)
          {            
             if (turn == endcoder.getCount())
             {
-               Console.WriteLine("00");
+
             }
             else
             {
