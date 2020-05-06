@@ -34,7 +34,7 @@ namespace LogicLayer
         short Historik;
         short MaksCount;
         short Port;
-        List<DateTime> Dato;
+        List<DateTime> Dato = null;
 
         //List<byte> EKGData;
         double[] EKGData;
