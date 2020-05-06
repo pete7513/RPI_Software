@@ -9,7 +9,7 @@ namespace Data
 {
    public class SqlDBDataAccess
    {
-      private string connetionStringST = @"Data Source=st-i4dab.uni.au.dk;Initial Catalog=F20ST2ITS2201908477;Integrated Security=False;User ID=F20ST2ITS2201908477;Password=F20ST2ITS2201908477;Connect Timeout=15;Encrypt=False;TrustServerCertificate=False";
+      private string connectionStringST = @"Data Source=st-i4dab.uni.au.dk;Initial Catalog=F20ST2ITS2201908477;Integrated Security=False;User ID=F20ST2ITS2201908477;Password=F20ST2ITS2201908477;Connect Timeout=15;Encrypt=False;TrustServerCertificate=False";
       private SqlConnection connection;
       private SqlCommand command;
       private string sql = null;
@@ -24,7 +24,7 @@ namespace Data
       //Kontruktor for den online database
       public SqlDBDataAccess()
       {
-         connection = new SqlConnection(connetionStringST);
+         connection = new SqlConnection(connectionStringST);
       }
 
       //Hente informationer omkring den patient som er tilknyttet EKGmåleren.
