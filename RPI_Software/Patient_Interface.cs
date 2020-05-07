@@ -39,7 +39,7 @@ namespace RPI_Software
 
          Thread.Sleep(500);
          Display.lcdGotoXY(0, 1);
-         Display.lcdPrint("Start EKG-måling");
+         Display.lcdPrint("Start EKG-maaling");
          Display.lcdGotoXY(0, 2);
          Display.lcdPrint("Kl. " + DateTime.Now.ToShortTimeString());
          Display.lcdGotoXY(0, 3);
@@ -54,7 +54,7 @@ namespace RPI_Software
          Thread.Sleep(500);
 
          Display.lcdGotoXY(0, 0);
-         Display.lcdPrint("Start EKG-måling");
+         Display.lcdPrint("Start EKG-maaling");
          Display.lcdGotoXY(0, 1);
          Display.lcdPrint("Kl. " + DateTime.Now.ToShortTimeString());
          Display.lcdGotoXY(0, 2);
@@ -81,7 +81,7 @@ namespace RPI_Software
          Display.lcdSetBackLight(255, 255, 0);
          for (int i = 10; i > 0; i--)
          {
-            Display.lcdPrint("Ekg-målingen går igang om " + i + " sekunder");
+            Display.lcdPrint("Ekg-maalingen går igang om " + i + " sekunder");
             Thread.Sleep(1000);
          }
       }
@@ -89,7 +89,7 @@ namespace RPI_Software
       public void CountDown50()
       {
          // Denne metode er en nedtællingsmetode der skal få displayet til at at indikere at en måling er igang   
-         Display.lcdPrint("Ekg-målingen er færdig om 50 sekunder");
+         Display.lcdPrint("Ekg-maalingen er færdig om 50 sekunder");
          Display.lcdPrint("Du bedes venligts forholde dig i ro");
       }
 
@@ -103,17 +103,17 @@ namespace RPI_Software
          if (beskedNummer == 0)
          {
             Display.lcdDisplay();
-            Display.lcdPrint("Din måling er afsendt til den online Data base");
+            Display.lcdPrint("Din maaling er afsendt til den online Data base");
          }
          if (beskedNummer == 1)
          {
             Display.lcdDisplay();
-            Display.lcdPrint("Din måling er afsendt til den lokale Data base");
+            Display.lcdPrint("Din maaling er afsendt til den lokale Data base");
          }
          if (beskedNummer == 2)
          {
             Display.lcdDisplay();
-            Display.lcdPrint("Din måling er ikke afsendt til den online eller den lokale Data base");
+            Display.lcdPrint("Din maaaling er ikke afsendt til den online eller den lokale Data base");
          }
       }
 
@@ -121,7 +121,7 @@ namespace RPI_Software
       {
          // Denne metode skal få displayet til at indikere at måligen er slut.
          Display.lcdClear();
-         Display.lcdPrint("Ekg-måling færdig");
+         Display.lcdPrint("Ekg-maaling færdig");
          Thread.Sleep(8000);
       }
 
