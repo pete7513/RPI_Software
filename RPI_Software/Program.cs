@@ -24,7 +24,6 @@ namespace RPI_Software
 
       // RPI komponenter <<Boundary>>
       private static TWIST endcoder;
-      private static ADC1015 ADC;
 
       //Atributter 
       private static short startMaaling = 0;
@@ -32,7 +31,7 @@ namespace RPI_Software
       private static short Historik = 2;
       private static short MaksCount;
       private static short turn = 0;
-      //static List<byte> EKGData;
+
       private static double[] EKGData;
       private static List<DateTime> history;
 
@@ -76,7 +75,7 @@ namespace RPI_Software
          //Start sekvens vises og hovedmenuen vises efter.
          Interface.ScreenColor(255, 0, 0); 
 
-         Interface.ShowStartMenu(Patient.PatientName);
+         Interface.ShowStartMenu("Torben"/*"Patient.PatientName"*/);
          Interface.ShowStartMåling();
       }
 

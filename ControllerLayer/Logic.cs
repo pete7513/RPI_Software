@@ -62,8 +62,8 @@ namespace LogicLayer
             return Patient;
         }
 
-      //Metoden som opretter en EKGmåling, samtidig med informationsskrivning på displayet. 
-      public double[] EKGmaalingCreate()
+        //Metoden som opretter en EKGmåling, samtidig med informationsskrivning på displayet. 
+        public double[] EKGmaalingCreate()
       {
          EKGData = new double[1100];
 

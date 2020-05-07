@@ -10,7 +10,7 @@ namespace Data
    public class SqlDBDataAccess
    {
       private string connectionStringST = @"Data Source=st-i4dab.uni.au.dk;Initial Catalog=F20ST2ITS2201908477;Integrated Security=False;User ID=F20ST2ITS2201908477;Password=F20ST2ITS2201908477;Connect Timeout=15;Encrypt=False;TrustServerCertificate=False";
-      private string connectionStringLDB = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=EKGDBDemo;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+      private string connectionStringLDB = @"Data Source=ASBJORN-LENOVO\SQLEXPRESS;Initial Catalog = F20ST2ITS2201908477; Integrated Security = True; Connect Timeout = 30; Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
       private SqlConnection connection;
       private SqlCommand command;
       private string sql = null;
