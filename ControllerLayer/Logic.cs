@@ -62,11 +62,10 @@ namespace LogicLayer
             return Patient;
         }
 
-        //Metoden som opretter en EKGmåling, samtidig med informationsskrivning på displayet. 
-        public double[] /*List<byte>*/ EKGmaalingCreate()
-        {
-            //List<byte> byteliste = new List<byte>();
-            EKGData = new double[1100];
+      //Metoden som opretter en EKGmåling, samtidig med informationsskrivning på displayet. 
+      public double[] EKGmaalingCreate()
+      {
+         EKGData = new double[1100];
 
             byte periode = 50;
             byte samplerate = 20;
@@ -74,18 +73,17 @@ namespace LogicLayer
             //antalMaalinger er antallet af målinger som ekgmåleren tager over perioden på 50 sekunder. 
             int AntalMaalinger = periode * samplerate;
 
-            for (int i = 0; i < AntalMaalinger; i++)
-            {
-                double sample = 0;
-                sample = Convert.ToDouble((ADC.readADC_SingleEnded(0) / 2048.0) * 6.144);
-                EKGData[i] = sample;
-                //byteliste.Add(sample);
+         for (int i = 0; i < AntalMaalinger; i++)
+         {
+            double sample = 0;
+            sample = Convert.ToDouble((ADC.readADC_SingleEnded(0) / 2048.0) * 6.144);
+            EKGData[i] = sample; 
+       
 
-                Thread.Sleep(1000 / (Convert.ToInt32(samplerate) - 4));
-            }
-            return EKGData;
-            //return byteliste;
-        }
+            Thread.Sleep(1000 / (Convert.ToInt32(samplerate) - 4));
+         }
+         return EKGData; 
+      }
 
         //Metoden skal sende en EKGmåling, og returnere en specifik byte, alt efter - 
         // om metoden kunne sende en EKG målingen eller ej.
@@ -125,6 +123,6 @@ namespace LogicLayer
             }
             return Dato;
         }
-    }
+   }
 }
 

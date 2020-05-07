@@ -125,7 +125,7 @@ namespace RPI_Software
          Thread.Sleep(8000);
       }
 
-        public void ShowHistorik(List<DateTime> dato)
+      public void ShowHistorik(List<DateTime> dato)
         {
             // Denne metode skal få displayet til at vise de 3 sidste målinger
             Display.lcdClear();
