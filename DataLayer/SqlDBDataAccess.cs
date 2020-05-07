@@ -49,7 +49,9 @@ namespace Data
          }
          catch
          {
-            return null;
+            Patient.PatientName = "NN";
+            Patient.CPR = "123456-7890";
+            return Patient; 
          }
       }
 

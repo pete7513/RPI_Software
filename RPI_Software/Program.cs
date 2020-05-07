@@ -42,8 +42,6 @@ namespace RPI_Software
       {
          initialisere();
 
-         StartMaaling(); 
-
          while (1 == 1)
          {            
             if (turn == endcoder.getCount())
@@ -75,7 +73,7 @@ namespace RPI_Software
          //Start sekvens vises og hovedmenuen vises efter.
          Interface.ScreenColor(255, 0, 0); 
 
-         Interface.ShowStartMenu("Torben"/*"Patient.PatientName"*/);
+         Interface.ShowStartMenu(Patient.PatientName);
          Interface.ShowStartMåling();
       }
 
