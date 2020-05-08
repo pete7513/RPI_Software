@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Threading;
 using DTO;
 using LogicLayer;
+
 //Using RPI; 
 
 // DebugAdapterHost.Launch /LaunchJson:"C:\Users\asbjo\source\repos\RPI_Software\RPI_Software\AFolder\launch.json" /EngineGuid:541B8A8A-6081-4506-9F0A-1CE771DEBC04 
@@ -56,7 +57,7 @@ namespace RPI_Software
          {
             //if (Knap.ispressed == true)
             //{ 
-                 //Batteristatus(Logic.Batteristatus())
+                 //Batteristatus()
             //}
 
             if (turn == endcoder.getCount())
@@ -82,7 +83,7 @@ namespace RPI_Software
          Logic = new Logic();
 
          //Start sekvens vises og hovedmenuen vises efter.
-         Interface.ScreenColor(255, 0, 0);
+         Interface.ScreenColor(255, 255, 0);
          endcoder.setCount(0);
 
          // metode til at hente patient informationer - retur værdi DTO patient
@@ -147,6 +148,7 @@ namespace RPI_Software
             if (endcoder.getCount() == startMaaling) //0
             {
                //Metode for sig
+               Console.WriteLine("Start måling er trykket");
                StartMaaling();
             }
 
@@ -170,27 +172,40 @@ namespace RPI_Software
       static void StartMaaling()
       {
          //Set backlightColor = Gul
+         Console.WriteLine("Baggrundsfarve gul");
          Interface.ScreenColor(255, 255, 0);
 
          //Påbegynder nedtælling 
+         Console.WriteLine("10");
          Interface.CountDown10();
 
          //Set backlightColor = Grøn
+         Console.WriteLine("Baggrundsfarve gul");
          Interface.ScreenColor(0, 255, 0);
 
          // Bruger information omkring at der er 50 sekunder til EKG målingen er færdig. 
+         Console.WriteLine("50");
          Interface.CountDown50();
 
-         //Oprettrelse af en EKG data liste
+         //Oprettrelse af en EKG objekt
+         Console.WriteLine("Oprettelse af EKGMaaling");
          maaling = Logic.EKGmaalingCreate();
 
          //Skærmen viser at målingen er færdig
+         Console.WriteLine("Reading done");
          Interface.ReadingDone();
 
          //Forsendelse af EKG måling og retur værdien er hvilken database som EKG målingen er blevet lagt op i
+         //returværiden placeres i besked metode til interfacet.
+         Console.WriteLine("EKGMaaling afsendelse");
          Interface.Besked(Logic.EKGMSendt(maaling));
 
+         //Set backlightColor = rød
+         Console.WriteLine("Baggrundsfarve rød");
+         Interface.ScreenColor(255, 0, 0);
+
          //menuen vises 
+         Console.WriteLine("Start maling menu vises");
          Interface.ShowStartMåling();
       }
 
@@ -202,8 +217,9 @@ namespace RPI_Software
       }
 
       //Skal tænde for et specifik antal LED'er alt efter hvilket byte "tal"
-      static void Batteristatus(byte tal)
+      static void Batteristatus()
       {
+         //byte tal = Logic.BatteristatusHent(); 
          //switch (tal)
          //{
          //   case 5:

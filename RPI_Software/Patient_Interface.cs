@@ -16,8 +16,8 @@ namespace RPI_Software
       public Patient_Interface()
       {
          Display = new SerLCD();
-         i2c = new I2c(); 
-         
+         i2c = new I2c();
+         Display.changeAddress(114); 
       }
 
       public void ShowStartMenu(string navn)
