@@ -10,7 +10,9 @@ namespace Data
    public class SqlDBDataAccess
    {
       private string connectionStringST = @"Data Source=st-i4dab.uni.au.dk;Initial Catalog=F20ST2ITS2201908477;Integrated Security=False;User ID=F20ST2ITS2201908477;Password=F20ST2ITS2201908477;Connect Timeout=15;Encrypt=False;TrustServerCertificate=False";
-      private string connectionStringLDB = @"Data Source=ASBJORN-LENOVO\SQLEXPRESS;Initial Catalog = F20ST2ITS2201908477; Integrated Security = True; Connect Timeout = 30; Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+      private string connectionStringSTL = @"Data Source=ASBJORN-LENOVO\SQLEXPRESS;Initial Catalog=F20ST2ITS2201908477;Integrated Security=False;User ID=F2020ST2ITS2201908477;Password=F20ST2ITS2201908477;Connect Timeout=15;Encrypt=False;TrustServerCertificate=False";
+      private string connectionStringLDB = @"Data Source=ASBJORN-LENOVO\SQLEXPRESS;Initial Catalog=F20ST2ITS2201908477; User ID=F2020ST2ITS2201908477; Password=F20ST2ITS2201908477;Connect Timeout=30; Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+      
       private SqlConnection connection;
       private SqlCommand command;
       private string sql = null;
@@ -31,8 +33,8 @@ namespace Data
       //Hente informationer omkring den patient som er tilknyttet EKGmåleren.
       public Patient_CPR loadPatient(string EKGID)
       {
-         try
-         {
+         //try
+         //{
             connection.Open();
             sql = "Select navn from dbo.EKGPatient where EKGID = " + EKGID;
 
@@ -46,13 +48,13 @@ namespace Data
             command.Dispose();
             connection.Close();
             return Patient;
-         }
-         catch
-         {
-            Patient.PatientName = "NN";
-            Patient.CPR = "123456-7890";
-            return Patient; 
-         }
+         //}
+         //catch
+         //{
+         //   Patient.PatientName = "NN";
+         //   Patient.CPR = "123456-7890";
+         //   return Patient; 
+         //}
       }
 
       //Hente informationer (Datetime) omkring patientens 3 seneste målinger med EKG målerne. 

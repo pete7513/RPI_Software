@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Threading;
 using DTO;
 using LogicLayer;
+//Using RPI; 
 
 // DebugAdapterHost.Launch /LaunchJson:"C:\Users\asbjo\source\repos\RPI_Software\RPI_Software\AFolder\launch.json" /EngineGuid:541B8A8A-6081-4506-9F0A-1CE771DEBC04 
 
@@ -35,6 +36,15 @@ namespace RPI_Software
       private static double[] EKGData;
       private static List<DateTime> history;
 
+      //RPI batteristatus 
+      //RPI rpi = new RPI(); 
+      //Key knap = new Key(rpi); 
+      //Led LD1 = new Led()
+      //Led LD2 = new Led()
+      //Led LD3 = new Led()
+      //Led LD4 = new Led()
+      //Led LD5 = new Led()
+
       #endregion
 
       //THE MAIN PROGRAM 
@@ -43,7 +53,12 @@ namespace RPI_Software
          initialisere();
 
          while (1 == 1)
-         {            
+         {
+            //if (Knap.ispressed == true)
+            //{ 
+                 //Batteristatus(Logic.Batteristatus())
+            //}
+
             if (turn == endcoder.getCount())
             {
 
@@ -67,13 +82,13 @@ namespace RPI_Software
          Logic = new Logic();
 
          // metode til at hente patient informationer - retur værdi DTO patient
-         Patient = Logic.getpatientCPR();
+         //Patient = Logic.getpatientCPR();
          endcoder.setCount(0);
 
          //Start sekvens vises og hovedmenuen vises efter.
          Interface.ScreenColor(255, 0, 0); 
 
-         Interface.ShowStartMenu(Patient.PatientName);
+         Interface.ShowStartMenu("Asbjørn");
          Interface.ShowStartMåling();
       }
 
@@ -192,5 +207,33 @@ namespace RPI_Software
             history = Logic.historik(CPR);
             Interface.ShowHistorik(history);
       }
+
+      //static void Batteristatus(byte tal)
+      //{
+         //switch (tal)
+         //{
+         //   case 5:
+         //      LD1.on(),LD2.on(),LD3.on(),LD4.on(),LD5.on();
+         //      break; 
+         //   case 4:
+         //      LD1.on(),LD2.on(),LD3.on(),LD4.on(),LD5.off();
+         //      break; 
+         //   case 3:
+         //      LD1.on(),LD2.on(),LD3.on(),LD4.off(),LD5.off();
+         //      break; 
+         //   case 2:
+         //      LD1.on(),LD2.on(),LD3.off(),LD4.off(),LD5.off();
+         //      break; 
+         //   case 1:
+         //      LD1.on(),LD2.off(),LD3.off(),LD4.off(),LD5.off();
+         //      break; 
+         //   case 0:
+         //      LD1.on(),LD2.off(),LD3.on(),LD4.off(),LD5.on();
+         //      break; 
+         //  default
+         //      LD1.off(),LD2.off(),LD3.off(),LD4.off(),LD5.off();
+         //      break; 
+         //}
+      //}
    }
 }

@@ -17,14 +17,15 @@ namespace RPI_Software
       {
          Display = new SerLCD();
          i2c = new I2c(); 
-         Display.changeAddress(80);
-         Display.lcdDisplay();
-         Display.lcdClear(); 
+         
       }
 
       public void ShowStartMenu(string navn)
       {
          // Når programmet starter skal denne metode kaldes, den skal tænde display og vise de forskellige menuer på det.
+         Display.lcdDisplay();
+         Display.lcdHome();
+
          Console.WriteLine("Velkommen");
          Display.lcdGotoXY(0, 1);
          Display.lcdPrint("Velkommen " + navn + "  - programmet starter");
@@ -78,7 +79,6 @@ namespace RPI_Software
       {
          // Denne metode er en nedtællingsmetode der skal få displayet til at at indikere at en måling er startet, og brugeren har 10
          // sekunder til at gøre sig klar
-         Display.lcdSetBackLight(255, 255, 0);
          for (int i = 10; i > 0; i--)
          {
             Display.lcdPrint("Ekg-maalingen går igang om " + i + " sekunder");

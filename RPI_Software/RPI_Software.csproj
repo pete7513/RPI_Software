@@ -24,12 +24,6 @@
     <Reference Include="RaspberryCore">
       <HintPath>C:\RaspberryPi\RaspberryCore.dll</HintPath>
     </Reference>
-    <Reference Include="RaspberryPi">
-      <HintPath>..\..\..\..\..\..\RaspberryPi\RaspberryPi.dll</HintPath>
-    </Reference>
-    <Reference Include="RaspberryPiDll">
-      <HintPath>..\..\..\..\..\..\RaspberryPi\RaspberryPiDll.dll</HintPath>
-    </Reference>
   </ItemGroup>
 
   <Target Name="LinuxDeployment" AfterTargets="PostBuildEvent">
