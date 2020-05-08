@@ -115,6 +115,9 @@ namespace RPI_Software
             Display.lcdDisplay();
             Display.lcdPrint("Din maaaling er ikke afsendt til den online eller den lokale Data base");
          }
+
+         //Beskeden vises på displayet et øjeblik 
+         Thread.Sleep(8000);
       }
 
       public void ReadingDone()

@@ -81,12 +81,15 @@ namespace RPI_Software
          endcoder = new TWIST();
          Logic = new Logic();
 
-         // metode til at hente patient informationer - retur værdi DTO patient
-         //Patient = Logic.getpatientCPR();
+         //Start sekvens vises og hovedmenuen vises efter.
+         Interface.ScreenColor(255, 0, 0);
          endcoder.setCount(0);
 
-         //Start sekvens vises og hovedmenuen vises efter.
-         Interface.ScreenColor(255, 0, 0); 
+         // metode til at hente patient informationer - retur værdi DTO patient
+         //Patient = Logic.getpatientCPR();
+
+
+
 
          Interface.ShowStartMenu("Asbjørn");
          Interface.ShowStartMåling();
@@ -179,23 +182,13 @@ namespace RPI_Software
          Interface.CountDown50();
 
          //Oprettrelse af en EKG data liste
-         EKGData = Logic.EKGmaalingCreate();
+         maaling = Logic.EKGmaalingCreate();
 
          //Skærmen viser at målingen er færdig
          Interface.ReadingDone();
 
-         //menuen vises 
-         Interface.ShowStartMåling();
-
-         //Oprettelse af nyt EKG måling opjekt med den nye liste
-         maaling = new EKG_Maaling(Patient.PatientName, Patient.CPR, DateTime.Now, EKGData);
-
          //Forsendelse af EKG måling og retur værdien er hvilken database som EKG målingen er blevet lagt op i
-         byte besked = Logic.EKGMSendt(maaling);
-         Interface.Besked(besked);
-
-         //Beskeden vises på displayet et øjeblik 
-         Thread.Sleep(8000);
+         Interface.Besked(Logic.EKGMSendt(maaling));
 
          //menuen vises 
          Interface.ShowStartMåling();
@@ -208,8 +201,9 @@ namespace RPI_Software
             Interface.ShowHistorik(history);
       }
 
-      //static void Batteristatus(byte tal)
-      //{
+      //Skal tænde for et specifik antal LED'er alt efter hvilket byte "tal"
+      static void Batteristatus(byte tal)
+      {
          //switch (tal)
          //{
          //   case 5:
@@ -234,6 +228,6 @@ namespace RPI_Software
          //      LD1.off(),LD2.off(),LD3.off(),LD4.off(),LD5.off();
          //      break; 
          //}
-      //}
+      }
    }
 }

@@ -64,7 +64,7 @@ namespace LogicLayer
       }
 
       //Metoden som opretter en EKGmåling, samtidig med informationsskrivning på displayet. 
-      public double[] EKGmaalingCreate()
+      public EKG_Maaling EKGmaalingCreate()
       {
          EKGData = new double[1100];
 
@@ -80,10 +80,10 @@ namespace LogicLayer
             sample = Convert.ToDouble((ADC.readADC_SingleEnded(0) / 2048.0) * 6.144);
             EKGData[i] = sample;
 
-
             Thread.Sleep(1000 / (Convert.ToInt32(samplerate) - 4));
          }
-         return EKGData;
+         maaling = new EKG_Maaling(Patient.PatientName, Patient.CPR, DateTime.Now, EKGData, "Andet", samplerate, periode,"B","double",Convert.ToInt32(EKGID));
+         return maaling;
       }
 
       //Metoden skal sende en EKGmåling, og returnere en specifik byte, alt efter - 
@@ -125,39 +125,41 @@ namespace LogicLayer
          return Dato;
       }
 
-      //public byte Batteristatus()
-      //{
-      //   int[] tid = new int[9999999];
-      //   int minut = 0;
-      //   double batterikapacitet = 1200000; /*mA minutter*/
+      //Metoden skal beregne batteristatus og returnere en specifik byte alt efter brug af batteri. 
+      public byte Batteristatus()
+      {
+         //   int[] tid = new int[9999999];
+         //   int minut = 0;
+         //   double batterikapacitet = 1200000; /*mA minutter*/
 
-      //   tid[tæller] = DateTime.Now.Minute;
+         //   tid[tæller] = DateTime.Now.Minute;
 
-      //   if (tæller > 1)
-      //   {
-      //      minut = tid[tæller] - tid[tæller - 1];
+         //   if (tæller > 1)
+         //   {
+         //      minut = tid[tæller] - tid[tæller - 1];
 
-      //      double strøm_mA = (ADC.readADC_SingleEnded(1) /*V*/ / 1 /*ohm*/);
+         //      double strøm_mA = (ADC.readADC_SingleEnded(1) /*V*/ / 1 /*ohm*/);
 
-      //      double strømBrugt_mAm = strøm_mA * minut;
+         //      double strømBrugt_mAm = strøm_mA * minut;
 
-      //      batterikapacitet = batterikapacitet - strømBrugt_mAm;
-      //   }
-      //   tæller++;
+         //      batterikapacitet = batterikapacitet - strømBrugt_mAm;
+         //   }
+         //   tæller++;
 
-      //   if (batterikapacitet > 960000)
-      //      return 5;
-      //   else if (batterikapacitet > 720000)
-      //      return 4;
-      //   else if (batterikapacitet > 480000)
-      //      return 3;
-      //   else if (batterikapacitet > 240000)
-      //      return 2;
-      //   else if (batterikapacitet <= 240000)
-      //      return 1;
-      //   else //Burde aldrig kunne lade sig gøre. 
-      //      return 0; 
-      //}
+         //   if (batterikapacitet > 960000)
+         //      return 5;
+         //   else if (batterikapacitet > 720000)
+         //      return 4;
+         //   else if (batterikapacitet > 480000)
+         //      return 3;
+         //   else if (batterikapacitet > 240000)
+         //      return 2;
+         //   else if (batterikapacitet <= 240000)
+         //      return 1;
+         //   else //Burde aldrig kunne lade sig gøre. 
+         //      return 0; 
+         return 0; 
+      }
    }
 }
 
