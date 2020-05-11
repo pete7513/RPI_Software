@@ -27,11 +27,11 @@ namespace LogicLayer
       private ADC1015 ADC;
 
       //Atributter 
-      string EKGID;
-      List<DateTime> Dato = null;
+      private string EKGID;
+      private List<DateTime> Dato = null;
 
       //List<byte> EKGData;
-      double[] EKGData;
+      private double[] EKGData;
       #endregion
 
       //Konstruktor med oprettelse af relevante referencer 
