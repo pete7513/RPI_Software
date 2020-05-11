@@ -31,10 +31,7 @@ namespace RPI_Software
       private static short startMaaling = 0;
       private static short Time = 1;
       private static short Historik = 2;
-      private static short MaksCount;
       private static short turn = 0;
-
-      private static double[] EKGData;
       private static List<DateTime> history;
 
       //RPI batteristatus 
@@ -57,7 +54,7 @@ namespace RPI_Software
          {
             //if (Knap.ispressed == true)
             //{ 
-                 //Batteristatus()
+                 Batteristatus();
             //}
 
             if (turn == endcoder.getCount())
@@ -86,14 +83,11 @@ namespace RPI_Software
          Interface.ScreenColor(255, 255, 0);
          endcoder.setCount(0);
 
-         // metode til at hente patient informationer - retur værdi DTO patient
-         //Patient = Logic.getpatientCPR();
+         //metode til at hente patient informationer - retur værdi DTO patient
+         Patient = Logic.getpatientCPR();
 
-
-
-
-         Interface.ShowStartMenu("Asbjørn");
-         Interface.ShowStartMåling();
+         Interface.ShowStartMenu(Patient.PatientName);
+         Interface.ShowStartMaaling();
       }
 
       //Metoden for hvis Endcoderen er drejet
@@ -106,12 +100,12 @@ namespace RPI_Software
             if (endcoder.getCount() == -1) //-1
             {
                endcoder.setCount(0);
-               Interface.ShowStartMåling();
+               Interface.ShowStartMaaling();
                Console.WriteLine("-1"); 
             }
             else if (endcoder.getCount() == startMaaling) //0
             {
-               Interface.ShowStartMåling();
+               Interface.ShowStartMaaling();
                Console.WriteLine("0");
             }
 
@@ -206,7 +200,7 @@ namespace RPI_Software
 
          //menuen vises 
          Console.WriteLine("Start maling menu vises");
-         Interface.ShowStartMåling();
+         Interface.ShowStartMaaling();
       }
 
       //Metoden er den metode som bliver kaldt når der bliver trykket "Vis histrotik" på displayet

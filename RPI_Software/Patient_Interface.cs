@@ -32,7 +32,7 @@ namespace RPI_Software
          Thread.Sleep(5000);
       }
 
-      public void ShowStartMåling()
+      public void ShowStartMaaling()
       {
          // Når programmet har lavet en måling kaldes den metode, som viser en skærm med den 
          Display.lcdClear();
@@ -89,7 +89,7 @@ namespace RPI_Software
       public void CountDown50()
       {
          // Denne metode er en nedtællingsmetode der skal få displayet til at at indikere at en måling er igang   
-         Display.lcdPrint("Ekg-maalingen er færdig om 50 sekunder");
+         Display.lcdPrint("Ekg-maalingen er faerdig om 50 sekunder");
          Display.lcdPrint("Du bedes venligts forholde dig i ro");
       }
 
@@ -132,8 +132,14 @@ namespace RPI_Software
         {
             // Denne metode skal få displayet til at vise de 3 sidste målinger
             Display.lcdClear();
-            Display.lcdGotoXY(0, 0);
-            Display.lcdPrint(dato.ToString());  
+         byte i = 1; 
+         foreach (DateTime item in dato)
+         {
+            Display.lcdGotoXY(0, i);
+            Display.lcdPrint(dato.ToString());
+            i++; 
+         }
+            
         }
 
     }

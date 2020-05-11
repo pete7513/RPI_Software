@@ -28,12 +28,6 @@ namespace LogicLayer
 
       //Atributter 
       string EKGID;
-      short StartMaaling;
-      short Time;
-      short Historik;
-      short MaksCount;
-      short Port;
-      int tæller;
       List<DateTime> Dato = null;
 
       //List<byte> EKGData;
@@ -51,9 +45,7 @@ namespace LogicLayer
 
          //Atribut værdier oprettes
          EKGID = "1011";
-         Port = 0;
          Dato = new List<DateTime>();
-         tæller = 0; 
       }
 
       // Metoden skal returnere det patient_CPR objekt som datalaget returnere. 
