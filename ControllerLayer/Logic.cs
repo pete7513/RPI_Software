@@ -60,7 +60,7 @@ namespace LogicLayer
       {
          EKGData = new double[1100];
 
-         byte periode = 50;
+         byte periode = 20;
          byte samplerate = 20;
 
          //antalMaalinger er antallet af målinger som ekgmåleren tager over perioden på 50 sekunder. 
@@ -120,6 +120,7 @@ namespace LogicLayer
       //Metoden skal beregne batteristatus og returnere en specifik byte alt efter brug af batteri. 
       public byte Batteristatus()
       {
+         //   int tæller = 0; 
          //   int[] tid = new int[9999999];
          //   int minut = 0;
          //   double batterikapacitet = 1200000; /*mA minutter*/
@@ -130,7 +131,7 @@ namespace LogicLayer
          //   {
          //      minut = tid[tæller] - tid[tæller - 1];
 
-         //      double strøm_mA = (ADC.readADC_SingleEnded(1) /*V*/ / 1 /*ohm*/);
+         //      double strøm_mA = ((ADC.readADC_SingleEnded(1) / 2048.0) * 6.144) /*V*/ / 1 /*ohm*/);
 
          //      double strømBrugt_mAm = strøm_mA * minut;
 

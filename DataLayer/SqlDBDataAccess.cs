@@ -7,12 +7,17 @@ using System.Linq;
 
 namespace Data
 {
+   //192.168.0.218\SQLEXPRES
+
+   //Tjenester start server
+   // SQL server genstart i configarations manager 
+
    public class SqlDBDataAccess
    {
       private string connectionStringST = @"Data Source=st-i4dab.uni.au.dk;Initial Catalog=F20ST2ITS2201908477;Integrated Security=False;User ID=F20ST2ITS2201908477;Password=F20ST2ITS2201908477;Connect Timeout=15;Encrypt=False;TrustServerCertificate=False";
       private string connectionStringSTL = @"Data Source=ASBJORN-LENOVO\SQLEXPRESS;Initial Catalog=F20ST2ITS2201908477;Integrated Security=False;User ID=F2020ST2ITS2201908477;Password=F20ST2ITS2201908477;Connect Timeout=15;Encrypt=False;TrustServerCertificate=False";
-      private string connectionStringLDB = @"Data Source=ASBJORN-LENOVO\SQLEXPRESS;Initial Catalog=F20ST2ITS2201908477; User ID=F2020ST2ITS2201908477; Password=F20ST2ITS2201908477;Connect Timeout=30; Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
-      
+      private string connectionStringLDB = @"Data Source=192.168.0.218\SQLEXPRESS;Initial Catalog=F20ST2ITS2201908477;Integrated Security=False;User ID=F2020ST2ITS2201908477;Password=F20ST2ITS2201908477;Connect Timeout=15;Encrypt=False;TrustServerCertificate=False";
+    
       private SqlConnection connection;
       private SqlCommand command;
       private string sql = null;
@@ -22,7 +27,6 @@ namespace Data
       private Patient_CPR Patient;
 
      private List<DateTime> historikDato;
-
 
       //Kontruktor for den online database
       public SqlDBDataAccess()
@@ -36,7 +40,7 @@ namespace Data
          //try
          //{
             connection.Open();
-            sql = "Select navn from dbo.EKGPatient where EKGID = " + EKGID;
+            sql = "Select navn, CPR from dbo.EKGPatient where EKGID = " + EKGID;
 
             command = new SqlCommand(sql, connection);
             dataReader = command.ExecuteReader();
@@ -87,14 +91,22 @@ namespace Data
 
          connection.Open();
 
-         string insertStringParam = @"INSERT INTO dbo.EKGDATA (tidsstempel, CPR, EKG_data) 
-                                      VALUES(@Datetime,@CPR,@EKGdata)";
+         string insertStringParam = @"INSERT INTO dbo.EKGDATA (tidsstempel, CPR, EKG_data, samplerate_hz, interval_sec,data_format, bin_eller_tekst, maaleformat_type,start_tid, maalenehed) 
+                                      VALUES(@Datetime,@CPR,@EKGdata,@samplerate_hz,@interval_sec,@data_format,@bin_eller_tekst,@maaleformat_type,@start_tid,@maalenehed)";
 
          using (command = new SqlCommand(insertStringParam, connection))
          {
             command.Parameters.AddWithValue("@Datetime", _Maaling.DateTime);
             command.Parameters.AddWithValue("@CPR", _Maaling.CPR);
             command.Parameters.AddWithValue("@EKGdata", array.SelectMany(value => BitConverter.GetBytes(value)).ToArray());
+            command.Parameters.AddWithValue("@samplerate_hz", maaling.Samplerate);
+            command.Parameters.AddWithValue("@interval_sec", maaling.Periode);
+            command.Parameters.AddWithValue("@data_format", maaling.Dataformat);
+            command.Parameters.AddWithValue("@bin_eller_tekst", maaling.Bin_text);
+            command.Parameters.AddWithValue("@maaleformat_type", maaling.Maaletype);
+            command.Parameters.AddWithValue("@start_tid", maaling.DateTime);
+            command.Parameters.AddWithValue("@maalenehed", maaling.EKGID); 
+
             command.ExecuteReader(); 
          }
          connection.Close();

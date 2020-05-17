@@ -57,6 +57,9 @@ namespace RPI_Software
                  Batteristatus();
             //}
 
+            Console.WriteLine("Start maaling");
+            StartMaaling();
+
             if (turn == endcoder.getCount())
             {
 
