@@ -216,31 +216,34 @@ namespace RPI_Software
       //Skal tænde for et specifik antal LED'er alt efter hvilket byte "tal"
       static void Batteristatus()
       {
-         //byte tal = Logic.BatteristatusHent(); 
-         //switch (tal)
-         //{
-         //   case 5:
-         //      LD1.on(),LD2.on(),LD3.on(),LD4.on(),LD5.on();
-         //      break; 
-         //   case 4:
-         //      LD1.on(),LD2.on(),LD3.on(),LD4.on(),LD5.off();
-         //      break; 
-         //   case 3:
-         //      LD1.on(),LD2.on(),LD3.on(),LD4.off(),LD5.off();
-         //      break; 
-         //   case 2:
-         //      LD1.on(),LD2.on(),LD3.off(),LD4.off(),LD5.off();
-         //      break; 
-         //   case 1:
-         //      LD1.on(),LD2.off(),LD3.off(),LD4.off(),LD5.off();
-         //      break; 
-         //   case 0:
-         //      LD1.on(),LD2.off(),LD3.on(),LD4.off(),LD5.on();
-         //      break; 
-         //  default
-         //      LD1.off(),LD2.off(),LD3.off(),LD4.off(),LD5.off();
-         //      break; 
-         //}
-      }
+            byte tal = Logic.BatteristatusHent();
+            switch (tal)
+            {
+                case 5:
+                    //LD1.on(),LD2.on(),LD3.on(),LD4.on(),LD5.on();
+                    Console.WriteLine("5 pærer lyser");
+                    break;
+                case 4:
+                    //LD1.on(),LD2.on(),LD3.on(),LD4.on(),LD5.off();
+                    Console.WriteLine("4 pærer lyser");
+                    break;
+                case 3:
+                    //LD1.on(),LD2.on(),LD3.on(),LD4.off(),LD5.off();
+                    Console.WriteLine("3 pærer lyser");
+                    break;
+                case 2:
+                    //LD1.on(),LD2.on(),LD3.off(),LD4.off(),LD5.off();
+                    Console.WriteLine("2 pærer lyser");
+                    break;
+                case 1:
+                    //LD1.on(),LD2.off(),LD3.off(),LD4.off(),LD5.off();
+                    Console.WriteLine("1 pærer lyser");
+                    break;
+                case 0:
+                    //LD1.off(),LD2.off(),LD3.off(),LD4.off(),LD5.off();
+                    Console.WriteLine("0 pærer lyser");
+                    break;
+            }
+        }
    }
 }
