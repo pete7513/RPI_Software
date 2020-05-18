@@ -133,7 +133,7 @@ namespace RPI_Software
          }
          catch
          {
-            Console.WriteLine("ERROR display fuckop");
+            Console.WriteLine("Connection to display failed.");
          }
       }
 
@@ -157,6 +157,7 @@ namespace RPI_Software
 
             else if (endcoder.getCount() == Historik) //2
             {
+               Console.WriteLine("Vis historik er trykket");
                History(Patient.CPR); 
             }
          }
