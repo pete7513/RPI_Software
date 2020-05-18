@@ -134,7 +134,7 @@ namespace RPI_Software
          }
          catch
          {
-            Console.WriteLine("ERROR display fuckop");
+            Console.WriteLine("Connection to display failed.");
          }
       }
 
@@ -158,6 +158,7 @@ namespace RPI_Software
 
             else if (endcoder.getCount() == Historik) //2
             {
+               Console.WriteLine("Vis historik er trykket");
                History(Patient.CPR); 
             }
          }
@@ -210,7 +211,7 @@ namespace RPI_Software
          Interface.ShowStartMaaling();
       }
 
-      //Metoden er den metode som bliver kaldt når der bliver trykket "Vis histrotik" på displayet
+      //Metoden er den metode som bliver kaldt når der bliver trykket "Vis historik" på displayet
       static void History(string CPR)
       {
             history = Logic.historik(CPR);
