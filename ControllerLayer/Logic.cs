@@ -58,23 +58,27 @@ namespace LogicLayer
       //Metoden som opretter en EKGmåling, samtidig med informationsskrivning på displayet. 
       public EKG_Maaling EKGmaalingCreate()
       {
-         EKGData = new double[1100];
+         EKGData = new double[400];
 
-         byte periode = 20;
-         byte samplerate = 20;
+         int periode = 10;
+         int samplerate = 20;
+         double sample = 0; 
 
          //antalMaalinger er antallet af målinger som ekgmåleren tager over perioden på 50 sekunder. 
          int AntalMaalinger = periode * samplerate;
-
+         Console.WriteLine("20 sek vent");
+         //Thread.Sleep(20000);
          for (int i = 0; i < AntalMaalinger; i++)
          {
-            double sample = 0;
+            sample = 0; 
             sample = Convert.ToDouble((ADC.readADC_SingleEnded(0) / 2048.0) * 6.144);
             EKGData[i] = sample;
 
             Thread.Sleep(1000 / (Convert.ToInt32(samplerate) - 4));
          }
          maaling = new EKG_Maaling(Patient.PatientName, Patient.CPR, DateTime.Now, EKGData, "Andet", samplerate, periode,"B","double",Convert.ToInt32(EKGID));
+         Console.WriteLine("10 sek vent");
+         //Thread.Sleep(20000);
          return maaling;
       }
 

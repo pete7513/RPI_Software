@@ -23,7 +23,6 @@ namespace Data
       private string sql = null;
       private SqlDataReader dataReader;
 
-      private EKG_Maaling maaling;
       private Patient_CPR Patient;
 
      private List<DateTime> historikDato;
@@ -86,30 +85,38 @@ namespace Data
       //Skal kunne uploade en EKG måling, som er tilknyttet patienten. 
       public void EKGM_DB_Sendt(EKG_Maaling _Maaling)
       {
-         double[] array = new double[1100];
-         array = _Maaling.EKG_Data; 
-
-         connection.Open();
-
-         string insertStringParam = @"INSERT INTO dbo.EKGDATA (tidsstempel, CPR, EKG_data, samplerate_hz, interval_sec,data_format, bin_eller_tekst, maaleformat_type,start_tid, maalenehed) 
-                                      VALUES(@Datetime,@CPR,@EKGdata,@samplerate_hz,@interval_sec,@data_format,@bin_eller_tekst,@maaleformat_type,@start_tid,@maalenehed)";
-
-         using (command = new SqlCommand(insertStringParam, connection))
+         try
          {
-            command.Parameters.AddWithValue("@Datetime", _Maaling.DateTime);
-            command.Parameters.AddWithValue("@CPR", _Maaling.CPR);
-            command.Parameters.AddWithValue("@EKGdata", array.SelectMany(value => BitConverter.GetBytes(value)).ToArray());
-            command.Parameters.AddWithValue("@samplerate_hz", maaling.Samplerate);
-            command.Parameters.AddWithValue("@interval_sec", maaling.Periode);
-            command.Parameters.AddWithValue("@data_format", maaling.Dataformat);
-            command.Parameters.AddWithValue("@bin_eller_tekst", maaling.Bin_text);
-            command.Parameters.AddWithValue("@maaleformat_type", maaling.Maaletype);
-            command.Parameters.AddWithValue("@start_tid", maaling.DateTime);
-            command.Parameters.AddWithValue("@maalenehed", maaling.EKGID); 
+            double[] array = new double[400];
+            array = _Maaling.EKG_Data;
 
-            command.ExecuteReader(); 
+            connection.Open();
+
+            string insertStringParam = @"INSERT INTO dbo.EKGDATA (tidsstempel, CPR, EKG_data, samplerate_hz, interval_sec,data_format, bin_eller_tekst, maaleformat_type,start_tid, maalenehed) 
+                                      VALUES(@Datetime, @CPR, @EKGdata, @Samplerate_hz, @Interval_sec, @Data_format, @Bin_eller_tekst, @Maaleformat_type, @Start_tid, @Maalenehed)";
+
+            Console.WriteLine(_Maaling.DateTime);
+            using (command = new SqlCommand(insertStringParam, connection))
+            {
+               command.Parameters.AddWithValue("@Datetime", Convert.ToString(_Maaling.DateTime));
+               command.Parameters.AddWithValue("@CPR", _Maaling.CPR);
+               command.Parameters.AddWithValue("@EKGdata", array.SelectMany(value => BitConverter.GetBytes(value)).ToArray());
+               command.Parameters.AddWithValue("@Samplerate_hz", _Maaling.Samplerate);
+               command.Parameters.AddWithValue("@Interval_sec", _Maaling.Periode);
+               command.Parameters.AddWithValue("@Data_format", _Maaling.Dataformat);
+               command.Parameters.AddWithValue("@Bin_eller_tekst", _Maaling.Bin_text);
+               command.Parameters.AddWithValue("@Maaleformat_type", _Maaling.Maaletype);
+               command.Parameters.AddWithValue("@Start_tid", _Maaling.DateTime);
+               command.Parameters.AddWithValue("@Maalenehed", _Maaling.EKGID);
+               command.ExecuteScalar();
+            }
+            connection.Close();
          }
-         connection.Close();
+         catch 
+         { 
+         
+         }
+
       }
 
    }

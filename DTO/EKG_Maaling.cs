@@ -28,7 +28,7 @@ namespace DTO
          Samplerate = samplerate;
          Periode = periode;
          Bin_text = bin_text;
-         Maaletype = Maaletype;
+         Maaletype = maaletype;
          EKGID = eKGID; 
       }
 

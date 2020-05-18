@@ -54,7 +54,7 @@ namespace RPI_Software
          {
             //if (Knap.ispressed == true)
             //{ 
-                 Batteristatus();
+                 //Batteristatus();
             //}
 
             Console.WriteLine("Start maaling");
@@ -89,6 +89,7 @@ namespace RPI_Software
          //metode til at hente patient informationer - retur værdi DTO patient
          Patient = Logic.getpatientCPR();
 
+         Console.WriteLine("Velkommen " + Patient.PatientName); 
          Interface.ShowStartMenu(Patient.PatientName);
          Interface.ShowStartMaaling();
       }
@@ -173,15 +174,15 @@ namespace RPI_Software
          Interface.ScreenColor(255, 255, 0);
 
          //Påbegynder nedtælling 
-         Console.WriteLine("10");
+         Console.WriteLine("10 sekunder vent");
          Interface.CountDown10();
 
          //Set backlightColor = Grøn
-         Console.WriteLine("Baggrundsfarve gul");
+         Console.WriteLine("Baggrundsfarve grøm");
          Interface.ScreenColor(0, 255, 0);
 
          // Bruger information omkring at der er 50 sekunder til EKG målingen er færdig. 
-         Console.WriteLine("50");
+         Console.WriteLine("50 sekunder vent ");
          Interface.CountDown50();
 
          //Oprettrelse af en EKG objekt
@@ -190,6 +191,7 @@ namespace RPI_Software
 
          //Skærmen viser at målingen er færdig
          Console.WriteLine("Reading done");
+         Console.WriteLine("8 sekunder vent"); 
          Interface.ReadingDone();
 
          //Forsendelse af EKG måling og retur værdien er hvilken database som EKG målingen er blevet lagt op i
