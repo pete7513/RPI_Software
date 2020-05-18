@@ -29,6 +29,8 @@ namespace LogicLayer
       //Atributter 
       private string EKGID;
       private List<DateTime> Dato = null;
+      private double sample;
+      private int tæller; 
 
       //List<byte> EKGData;
       private double[] EKGData;
@@ -38,7 +40,7 @@ namespace LogicLayer
       public Logic()
       {
          DBaccess = new SqlDBDataAccess();
-         Liteaccess = new SqliteDataAccess();
+         //Liteaccess = new SqliteDataAccess();
 
          ADC = new ADC1015();
          Patient = new Patient_CPR("NN", "NCPR");
@@ -46,6 +48,8 @@ namespace LogicLayer
          //Atribut værdier oprettes
          EKGID = "1011";
          Dato = new List<DateTime>();
+         Dato = null; 
+         tæller = 0;
       }
 
       // Metoden skal returnere det patient_CPR objekt som datalaget returnere. 
@@ -58,14 +62,16 @@ namespace LogicLayer
       //Metoden som opretter en EKGmåling, samtidig med informationsskrivning på displayet. 
       public EKG_Maaling EKGmaalingCreate()
       {
-         EKGData = new double[400];
+         EKGData = new double[200];
 
          int periode = 10;
          int samplerate = 20;
-         double sample = 0; 
+         sample = 0; 
 
          //antalMaalinger er antallet af målinger som ekgmåleren tager over perioden på 50 sekunder. 
          int AntalMaalinger = periode * samplerate;
+
+
          Console.WriteLine("20 sek vent");
          //Thread.Sleep(20000);
          for (int i = 0; i < AntalMaalinger; i++)
@@ -77,7 +83,7 @@ namespace LogicLayer
             Thread.Sleep(1000 / (Convert.ToInt32(samplerate) - 4));
          }
          maaling = new EKG_Maaling(Patient.PatientName, Patient.CPR, DateTime.Now, EKGData, "Andet", samplerate, periode,"B","double",Convert.ToInt32(EKGID));
-         Console.WriteLine("10 sek vent");
+         Console.WriteLine("20 sek vent");
          //Thread.Sleep(20000);
          return maaling;
       }
@@ -123,10 +129,12 @@ namespace LogicLayer
 
       //Metoden skal beregne batteristatus og returnere en specifik byte alt efter brug af batteri. 
       public byte BatteristatusHent()
-      {
+      {     
             int[] tid = new int[999999];
             int minut = 0;
             double batterikapacitet = 1200000; /*mA minutter*/
+
+            tid[tæller] = DateTime.Now.Minute; 
 
             if (minut > 0)
             {
@@ -140,6 +148,7 @@ namespace LogicLayer
                 batterikapacitet = batterikapacitet - strømBrugt_mAm;
             }
 
+            ++tæller; 
             if (batterikapacitet > 960000)
                 return 5;
             else if (batterikapacitet > 720000)
@@ -152,6 +161,8 @@ namespace LogicLayer
                 return 1;
             else //Burde aldrig kunne lade sig gøre. 
                 return 0;
+
+            
       }
    }
 }

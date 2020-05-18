@@ -54,7 +54,7 @@ namespace RPI_Software
          {
             //if (Knap.ispressed == true)
             //{ 
-                 //Batteristatus();
+                 Batteristatus();
             //}
 
             Console.WriteLine("Start maaling");
@@ -87,7 +87,8 @@ namespace RPI_Software
          endcoder.setCount(0);
 
          //metode til at hente patient informationer - retur værdi DTO patient
-         Patient = Logic.getpatientCPR();
+         
+
 
          Console.WriteLine("Velkommen " + Patient.PatientName); 
          Interface.ShowStartMenu(Patient.PatientName);
@@ -189,6 +190,10 @@ namespace RPI_Software
          Console.WriteLine("Oprettelse af EKGMaaling");
          maaling = Logic.EKGmaalingCreate();
 
+         //Set backlightColor = rød
+         Console.WriteLine("Baggrundsfarve rød");
+         Interface.ScreenColor(255, 0, 0);
+
          //Skærmen viser at målingen er færdig
          Console.WriteLine("Reading done");
          Console.WriteLine("8 sekunder vent"); 
@@ -199,9 +204,6 @@ namespace RPI_Software
          Console.WriteLine("EKGMaaling afsendelse");
          Interface.Besked(Logic.EKGMSendt(maaling));
 
-         //Set backlightColor = rød
-         Console.WriteLine("Baggrundsfarve rød");
-         Interface.ScreenColor(255, 0, 0);
 
          //menuen vises 
          Console.WriteLine("Start maling menu vises");

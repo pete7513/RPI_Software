@@ -18,20 +18,16 @@ namespace Data
       {
 
       }
-  
+
       public void EKGM_lite_Sendt(EKG_Maaling maaling)
       {
-         using (IDbConnection cnn = new SQLiteConnection(LoadConnectString()))
-         {
-            cnn.Execute("insert into Person (FirstName, LastName, BIT) values (@FirstName, @LastName, @array)", maaling);
-         }
+         // ingen implementering 
       }
 
       private string LoadConnectString(string ID = "Default")
       {
-         //Dataccess skal ske i en app config fil, som kun findes i framework what to do?? 
-
-         return null;   //ConfigurationManager.ConnectionStrings[ID].ConnectionString;
+         // ingen implementering. 
+         return null; 
       }
    }
 }

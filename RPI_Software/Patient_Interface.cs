@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Text;
 using RaspberryPiCore.LCD;
 using RaspberryPiCore;
-using RaspberryPiCore.i2cdotnet;
 using System.Threading;
 
 namespace RPI_Software
@@ -11,13 +10,10 @@ namespace RPI_Software
    public class Patient_Interface
    {
       private SerLCD Display;
-      private I2c i2c; 
-
+    
       public Patient_Interface()
       {
          Display = new SerLCD();
-         i2c = new I2c();
-         Display.changeAddress(114); 
       }
 
       public void ShowStartMenu(string navn)
@@ -31,12 +27,13 @@ namespace RPI_Software
          Console.WriteLine("Velkommen");
          Display.lcdGotoXY(0, 1);
          Display.lcdGotoXY(0, 1);
-         Display.lcdPrint("Velkommen " + navn );
+         Display.lcdPrint("    Velkommen " + navn);
          Display.lcdGotoXY(0, 2);
          Display.lcdGotoXY(0, 2);
-         Display.lcdPrint("Programmet starter..."); 
+         Display.lcdPrint("   Programmet starter...");
 
          Thread.Sleep(5000);
+         Display.lcdClear(); 
       }
 
       public void ShowStartMaaling()
@@ -47,11 +44,11 @@ namespace RPI_Software
 
          Thread.Sleep(500);
          Display.lcdGotoXY(0, 1);
-         Display.lcdPrint("Start EKG-maaling");
+         Display.lcdPrint(" - Start EKG-maaling");
          Display.lcdGotoXY(0, 2);
-         Display.lcdPrint("Kl. " + DateTime.Now.ToShortTimeString());
+         Display.lcdPrint("   Kl. " + DateTime.Now.ToShortTimeString());
          Display.lcdGotoXY(0, 3);
-         Display.lcdPrint("Vis historik");
+         Display.lcdPrint("   Vis historik");
       }
 
       public void ShowTime()
@@ -62,11 +59,11 @@ namespace RPI_Software
          Thread.Sleep(500);
 
          Display.lcdGotoXY(0, 0);
-         Display.lcdPrint("Start EKG-maaling");
+         Display.lcdPrint("   Start EKG-maaling");
          Display.lcdGotoXY(0, 1);
-         Display.lcdPrint("Kl. " + DateTime.Now.ToShortTimeString());
+         Display.lcdPrint(" - Kl. " + DateTime.Now.ToShortTimeString());
          Display.lcdGotoXY(0, 2);
-         Display.lcdPrint("Vis historik");
+         Display.lcdPrint("   Vis historik");
       }
 
       public void ShowHistory()
@@ -77,9 +74,9 @@ namespace RPI_Software
          Thread.Sleep(500);
 
          Display.lcdGotoXY(0, 0);
-         Display.lcdPrint("Kl. " + DateTime.Now.ToShortTimeString());
+         Display.lcdPrint("   Kl. " + DateTime.Now.ToShortTimeString());
          Display.lcdGotoXY(0, 1);
-         Display.lcdPrint("Vis historik");
+         Display.lcdPrint(" - Vis historik");
       }
 
       public void CountDown10()
@@ -88,7 +85,10 @@ namespace RPI_Software
          // sekunder til at gøre sig klar
          for (int i = 10; i > 0; i--)
          {
-            Display.lcdPrint("Ekg-maalingen går igang om " + i + " sekunder");
+            Display.lcdGotoXY(0, 1);
+            Display.lcdPrint("Ekg-maalingen går igang");
+            Display.lcdGotoXY(0, 2);
+            Display.lcdPrint("om " + i + " sekunder"); 
             Thread.Sleep(1000);
          }
       }
@@ -96,7 +96,10 @@ namespace RPI_Software
       public void CountDown50()
       {
          // Denne metode er en nedtællingsmetode der skal få displayet til at at indikere at en måling er igang   
+
+         Display.lcdGotoXY(0, 1);
          Display.lcdPrint("Ekg-maalingen er faerdig om 50 sekunder");
+         Display.lcdGotoXY(0, 2);
          Display.lcdPrint("Du bedes venligts forholde dig i ro");
       }
 
@@ -110,17 +113,25 @@ namespace RPI_Software
          if (beskedNummer == 0)
          {
             Display.lcdDisplay();
-            Display.lcdPrint("Din maaling er afsendt til den online Data base");
+            Console.WriteLine("Afsendelse til Online DB lykkes");
+            Display.lcdGotoXY(0, 1);
+            Display.lcdPrint("Din maaling er afsendt");
+            Display.lcdGotoXY(0, 2);
+            Display.lcdPrint("til den online Data base");
          }
          if (beskedNummer == 1)
          {
-            Display.lcdDisplay();
-            Display.lcdPrint("Din maaling er afsendt til den lokale Data base");
+            Display.lcdGotoXY(0, 1);
+            Display.lcdPrint("Din maaling er afsendt");
+            Display.lcdGotoXY(0, 2);
+            Display.lcdPrint("til den lokale Data base");
          }
          if (beskedNummer == 2)
          {
-            Display.lcdDisplay();
-            Display.lcdPrint("Din maaaling er ikke afsendt til den online eller den lokale Data base");
+            Display.lcdGotoXY(0, 1); 
+            Display.lcdPrint("Din maaling er ");
+            Display.lcdGotoXY(0, 2);
+            Display.lcdPrint("ikke afsendt");
          }
 
          //Beskeden vises på displayet et øjeblik 
@@ -136,18 +147,18 @@ namespace RPI_Software
       }
 
       public void ShowHistorik(List<DateTime> dato)
-        {
-            // Denne metode skal få displayet til at vise de 3 sidste målinger
-            Display.lcdClear();
-         byte i = 1; 
+      {
+         // Denne metode skal få displayet til at vise de 3 sidste målinger
+         Display.lcdClear();
+         byte i = 1;
          foreach (DateTime item in dato)
          {
             Display.lcdGotoXY(0, i);
             Display.lcdPrint(dato.ToString());
-            i++; 
+            i++;
          }
-            
-        }
 
-    }
+      }
+
+   }
 }
