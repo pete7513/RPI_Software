@@ -208,7 +208,7 @@ namespace RPI_Software
          Interface.ShowStartMaaling();
       }
 
-      //Metoden er den metode som bliver kaldt når der bliver trykket "Vis histrotik" på displayet
+      //Metoden er den metode som bliver kaldt når der bliver trykket "Vis historik" på displayet
       static void History(string CPR)
       {
             history = Logic.historik(CPR);
