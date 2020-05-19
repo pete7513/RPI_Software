@@ -74,6 +74,7 @@ namespace LogicLayer
 
          Console.WriteLine("20 sek vent");
          //Thread.Sleep(20000);
+        
          for (int i = 0; i < AntalMaalinger; i++)
          {
             sample = 0; 
@@ -83,8 +84,10 @@ namespace LogicLayer
             Thread.Sleep(1000 / (Convert.ToInt32(samplerate) - 4));
          }
          maaling = new EKG_Maaling(Patient.PatientName, Patient.CPR, DateTime.Now, EKGData, "Andet", samplerate, periode,"B","double",Convert.ToInt32(EKGID));
+       
          Console.WriteLine("20 sek vent");
          //Thread.Sleep(20000);
+
          return maaling;
       }
 

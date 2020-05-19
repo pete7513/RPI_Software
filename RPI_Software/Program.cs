@@ -57,6 +57,7 @@ namespace RPI_Software
                  Batteristatus();
             //}
 
+            History(Patient.CPR); 
             Console.WriteLine("Start maaling");
             StartMaaling();
 
@@ -87,8 +88,7 @@ namespace RPI_Software
          endcoder.setCount(0);
 
          //metode til at hente patient informationer - retur værdi DTO patient
-         
-
+         Patient = Logic.getpatientCPR(); 
 
          Console.WriteLine("Velkommen " + Patient.PatientName); 
          Interface.ShowStartMenu(Patient.PatientName);
@@ -226,27 +226,27 @@ namespace RPI_Software
             {
                 case 5:
                     //LD1.on(),LD2.on(),LD3.on(),LD4.on(),LD5.on();
-                    Console.WriteLine("5 pærer lyser");
+                    Console.WriteLine("5 Led'er lyser");
                     break;
                 case 4:
                     //LD1.on(),LD2.on(),LD3.on(),LD4.on(),LD5.off();
-                    Console.WriteLine("4 pærer lyser");
+                    Console.WriteLine("4 Led'er lyser");
                     break;
                 case 3:
                     //LD1.on(),LD2.on(),LD3.on(),LD4.off(),LD5.off();
-                    Console.WriteLine("3 pærer lyser");
+                    Console.WriteLine("3 Led'er lyser");
                     break;
                 case 2:
                     //LD1.on(),LD2.on(),LD3.off(),LD4.off(),LD5.off();
-                    Console.WriteLine("2 pærer lyser");
+                    Console.WriteLine("2 Led'er lyser");
                     break;
                 case 1:
                     //LD1.on(),LD2.off(),LD3.off(),LD4.off(),LD5.off();
-                    Console.WriteLine("1 pærer lyser");
+                    Console.WriteLine("1 Led'er lyser");
                     break;
                 case 0:
                     //LD1.off(),LD2.off(),LD3.off(),LD4.off(),LD5.off();
-                    Console.WriteLine("0 pærer lyser");
+                    Console.WriteLine("0 Led'er lyser");
                     break;
             }
         }

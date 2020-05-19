@@ -86,7 +86,7 @@ namespace RPI_Software
          for (int i = 10; i > 0; i--)
          {
             Display.lcdGotoXY(0, 1);
-            Display.lcdPrint("Ekg-maalingen går igang");
+            Display.lcdPrint("Ekg-maalingen gaar igang");
             Display.lcdGotoXY(0, 2);
             Display.lcdPrint("om " + i + " sekunder"); 
             Thread.Sleep(1000);
@@ -100,7 +100,7 @@ namespace RPI_Software
          Display.lcdGotoXY(0, 1);
          Display.lcdPrint("Ekg-maalingen er faerdig om 50 sekunder");
          Display.lcdGotoXY(0, 2);
-         Display.lcdPrint("Du bedes venligts forholde dig i ro");
+         Display.lcdPrint("Du bedes venligst forholde dig i ro");
       }
 
       public void ScreenColor(byte red, byte green, byte blue)
@@ -142,7 +142,7 @@ namespace RPI_Software
       {
          // Denne metode skal få displayet til at indikere at måligen er slut.
          Display.lcdClear();
-         Display.lcdPrint("Ekg-maaling færdig");
+         Display.lcdPrint(" Din Ekg-maaling er færdig");
          Thread.Sleep(8000);
       }
 
@@ -154,7 +154,7 @@ namespace RPI_Software
          foreach (DateTime item in dato)
          {
             Display.lcdGotoXY(0, i);
-            Display.lcdPrint(dato.ToString());
+            Display.lcdPrint(item.ToString());
             i++;
          }
 

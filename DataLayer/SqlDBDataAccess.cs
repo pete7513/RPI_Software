@@ -65,17 +65,16 @@ namespace Data
       {
          connection.Open();
          historikDato = new List<DateTime>();
-         sql = "SELECT TOP 3 tidsstempel FROM EKGDATA WHERE CPR = '" + cpr + "' ORDER BY Dato DESC;";
+         sql = "SELECT TOP 3 tidsstempel FROM EKGDATA WHERE CPR = '" + cpr + "' ORDER BY tidsstempel DESC;";
 
          using (command = new SqlCommand(sql, connection))
          {
             dataReader = command.ExecuteReader();
             while (dataReader.Read())
             {
-               if (dataReader["CPR"].ToString() == cpr)
-               {
+            
                   historikDato.Add(Convert.ToDateTime(dataReader["tidsstempel"]));
-               }
+
             }
          }
          connection.Close();
