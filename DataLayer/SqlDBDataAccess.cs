@@ -13,9 +13,9 @@ namespace Data
 
    public class SqlDBDataAccess
    {
+      //Lokal database på Skolens server. 
       private string connectionStringST = @"Data Source=st-i4dab.uni.au.dk;Initial Catalog=F20ST2ITS2201908477;Integrated Security=False;User ID=F20ST2ITS2201908477;Password=F20ST2ITS2201908477;Connect Timeout=15;Encrypt=False;TrustServerCertificate=False";
-      private string connectionStringSTL = @"Data Source=ASBJORN-LENOVO\SQLEXPRESS;Initial Catalog=F20ST2ITS2201908477;Integrated Security=False;User ID=F2020ST2ITS2201908477;Password=F20ST2ITS2201908477;Connect Timeout=15;Encrypt=False;TrustServerCertificate=False";
-        // Lokal DataBase
+      // Lokal DataBase på Asbjørns computer 
       private string connectionStringLDB = @"Data Source=192.168.0.218\SQLEXPRESS;Initial Catalog=F20ST2ITS2201908477;Integrated Security=False;User ID=F2020ST2ITS2201908477;Password=F20ST2ITS2201908477;Connect Timeout=15;Encrypt=False;TrustServerCertificate=False";
 
       private SqlConnection connection;
@@ -30,7 +30,7 @@ namespace Data
       //Kontruktor for den online database
       public SqlDBDataAccess()
       {
-         connection = new SqlConnection(connectionStringLDB);
+         connection = new SqlConnection(connectionStringST);
       }
 
       //Hente informationer omkring den patient som er tilknyttet EKGmåleren.
@@ -95,7 +95,7 @@ namespace Data
          Console.WriteLine(_Maaling.DateTime);
          using (command = new SqlCommand(insertStringParam, connection))
          {
-            command.Parameters.AddWithValue("@Datetime", Convert.ToString(_Maaling.DateTime));
+            command.Parameters.AddWithValue("@Datetime", _Maaling.DateTime);
             command.Parameters.AddWithValue("@CPR", _Maaling.CPR);
             command.Parameters.AddWithValue("@EKGdata", array.SelectMany(value => BitConverter.GetBytes(value)).ToArray());
             command.Parameters.AddWithValue("@Samplerate_hz", _Maaling.Samplerate);
