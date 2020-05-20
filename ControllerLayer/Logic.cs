@@ -1,13 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading;
 using DTO;
 using Data;
-using Dapper;
 using RaspberryPiCore.ADC;
-using RaspberryPiCore.i2cdotnet;
-using System.Data.SqlTypes;
 
 namespace LogicLayer
 {
