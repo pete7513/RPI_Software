@@ -26,9 +26,8 @@ namespace LogicLayer
       private string EKGID;
       private List<DateTime> Dato = null;
       private double sample;
-      private int tæller; 
+      private int taeller; 
 
-      //List<byte> EKGData;
       private double[] EKGData;
       #endregion
 
@@ -45,7 +44,7 @@ namespace LogicLayer
          EKGID = "1011";
          Dato = new List<DateTime>();
          Dato = null; 
-         tæller = 0;
+         taeller = 0;
       }
 
       // Metoden skal returnere det patient_CPR objekt som datalaget returnere. 
@@ -133,7 +132,7 @@ namespace LogicLayer
             int minut = 0;
             double batterikapacitet = 1200000; /*mA minutter*/
 
-            tid[tæller] = DateTime.Now.Minute; 
+            tid[taeller] = DateTime.Now.Minute; 
 
             if (minut > 0)
             {
@@ -147,7 +146,7 @@ namespace LogicLayer
                 batterikapacitet = (batterikapacitet - strømBrugt_mAm);
             }
 
-            ++tæller; 
+            ++taeller; 
             if (batterikapacitet > 960000)
                 return 5;
             else if (batterikapacitet > 720000)

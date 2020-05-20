@@ -29,6 +29,5 @@ namespace DTO
          Maaletype = maaletype;
          EKGID = eKGID; 
       }
-
    }
 }

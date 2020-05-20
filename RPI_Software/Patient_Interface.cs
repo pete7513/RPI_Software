@@ -155,8 +155,6 @@ namespace RPI_Software
             Display.lcdPrint(item.ToString());
             i++;
          }
-
       }
-
    }
 }
