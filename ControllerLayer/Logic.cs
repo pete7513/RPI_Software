@@ -51,7 +51,7 @@ namespace LogicLayer
       // Metoden skal returnere det patient_CPR objekt som datalaget returnere. 
       public Patient_CPR getpatientCPR()
       {
-         Patient = DBaccess.loadPatient(EKGID);
+         Patient = DBaccess.LoadPatient(EKGID);
          return Patient;
       }
 

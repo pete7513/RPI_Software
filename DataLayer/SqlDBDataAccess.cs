@@ -34,7 +34,7 @@ namespace Data
       }
 
       //Hente informationer omkring den patient som er tilknyttet EKGmåleren.
-      public Patient_CPR loadPatient(string EKGID)
+      public Patient_CPR LoadPatient(string EKGID)
       {
          try
          {
