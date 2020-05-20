@@ -14,9 +14,9 @@ namespace Data
    public class SqlDBDataAccess
    {
       //Lokal database på Skolens server. 
-      private string connectionStringST = @"Data Source=st-i4dab.uni.au.dk;Initial Catalog=F20ST2ITS2201908477;Integrated Security=False;User ID=F20ST2ITS2201908477;Password=F20ST2ITS2201908477;Connect Timeout=15;Encrypt=False;TrustServerCertificate=False";
+      private readonly string connectionStringST = @"Data Source=st-i4dab.uni.au.dk;Initial Catalog=F20ST2ITS2201908477;Integrated Security=False;User ID=F20ST2ITS2201908477;Password=F20ST2ITS2201908477;Connect Timeout=15;Encrypt=False;TrustServerCertificate=False";
       // Lokal DataBase på Asbjørns computer 
-      private string connectionStringLDB = @"Data Source=192.168.0.218\SQLEXPRESS;Initial Catalog=F20ST2ITS2201908477;Integrated Security=False;User ID=F2020ST2ITS2201908477;Password=F20ST2ITS2201908477;Connect Timeout=15;Encrypt=False;TrustServerCertificate=False";
+      private readonly string connectionStringLDB = @"Data Source=192.168.0.218\SQLEXPRESS;Initial Catalog=F20ST2ITS2201908477;Integrated Security=False;User ID=F2020ST2ITS2201908477;Password=F20ST2ITS2201908477;Connect Timeout=15;Encrypt=False;TrustServerCertificate=False";
 
       private SqlConnection connection;
       private SqlCommand command;
@@ -61,7 +61,7 @@ namespace Data
       }
 
       //Hente informationer (Datetime) omkring patientens 3 seneste målinger med EKG målerne. 
-      public List<DateTime> loadHistorik(string cpr)
+      public List<DateTime> LoadHistorik(string cpr)
       {
          connection.Open();
          historikDato = new List<DateTime>();

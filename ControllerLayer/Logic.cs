@@ -49,7 +49,7 @@ namespace LogicLayer
       }
 
       // Metoden skal returnere det patient_CPR objekt som datalaget returnere. 
-      public Patient_CPR getpatientCPR()
+      public Patient_CPR GetPatientCPR()
       {
          Patient = DBaccess.LoadPatient(EKGID);
          return Patient;
@@ -112,12 +112,12 @@ namespace LogicLayer
          }
       }
 
-      // Metoden skal returnere det objekt som metoden loadHistorik() returnerer i datalaget. 
-      public List<DateTime> historik(string cpr)
+      // Metoden skal returnere det objekt som metoden LoadHistorik() returnerer i datalaget. 
+      public List<DateTime> Historik(string cpr)
       {
          try
          {
-            Dato = DBaccess.loadHistorik(cpr);
+            Dato = DBaccess.LoadHistorik(cpr);
          }
          catch
          {
@@ -144,7 +144,7 @@ namespace LogicLayer
                 double strøm_mA = ((20000 / 2048.0) * 6.144) / 1 ;
                 double strømBrugt_mAm = strøm_mA * minut;
 
-                batterikapacitet = batterikapacitet - strømBrugt_mAm;
+                batterikapacitet = (batterikapacitet - strømBrugt_mAm);
             }
 
             ++tæller; 

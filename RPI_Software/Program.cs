@@ -25,9 +25,9 @@ namespace RPI_Software
       private static TWIST endcoder;
 
       //Atributter 
-      private static short startMaaling = 0;
-      private static short Time = 1;
-      private static short Historik = 2;
+      private readonly static short startMaaling = 0;
+      private readonly static short Time = 1;
+      private readonly static short Historik = 2;
       private static short turn = 0;
       private static List<DateTime> history;
 
@@ -43,9 +43,9 @@ namespace RPI_Software
       #endregion
 
       //THE MAIN PROGRAM 
-      static void Main(string[] args)
+      static void Main()
       {
-         initialisere();
+         Initialisere();
 
          while (1 == 1)
          {
@@ -73,7 +73,7 @@ namespace RPI_Software
       }
 
       //Metoden starter displayet op og henter patientinformationer. 
-      static void initialisere()
+      static void Initialisere()
       {
          //Objekter oprettes.
          Interface = new Patient_Interface();
@@ -85,7 +85,7 @@ namespace RPI_Software
          endcoder.setCount(0);
 
          //metode til at hente patient informationer - retur værdi DTO patient
-         Patient = Logic.getpatientCPR(); 
+         Patient = Logic.GetPatientCPR(); 
 
          Console.WriteLine("Velkommen " + Patient.PatientName); 
          Interface.ShowStartMenu(Patient.PatientName);
@@ -211,7 +211,7 @@ namespace RPI_Software
       //Metoden er den metode som bliver kaldt når der bliver trykket "Vis historik" på displayet
       static void History(string CPR)
       {
-            history = Logic.historik(CPR);
+            history = Logic.Historik(CPR);
             Interface.ShowHistorik(history);
       }
 
