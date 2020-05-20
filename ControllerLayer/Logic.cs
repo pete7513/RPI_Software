@@ -62,10 +62,10 @@ namespace LogicLayer
       //Metoden som opretter en EKGmåling, samtidig med informationsskrivning på displayet. 
       public EKG_Maaling EKGmaalingCreate()
       {
-         EKGData = new double[200];
+         EKGData = new double[250];
 
          int periode = 10;
-         int samplerate = 20;
+         int samplerate = 25;
          sample = 0; 
 
          //antalMaalinger er antallet af målinger som ekgmåleren tager over perioden på 50 sekunder. 

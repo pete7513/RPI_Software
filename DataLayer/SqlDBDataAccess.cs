@@ -84,7 +84,7 @@ namespace Data
       //Skal kunne uploade en EKG måling, som er tilknyttet patienten. 
       public void EKGM_DB_Sendt(EKG_Maaling _Maaling)
       {
-         double[] array = new double[200];
+         double[] array = new double[250];
          array = _Maaling.EKG_Data;
 
          connection.Open();
