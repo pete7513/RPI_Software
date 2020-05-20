@@ -1,9 +1,6 @@
 ﻿using System;
-using RaspberryPiCore.ADC;
 using RaspberryPiCore.TWIST;
-using RaspberryPiCore.LCD;
 using System.Collections.Generic;
-using System.Threading;
 using DTO;
 using LogicLayer;
 

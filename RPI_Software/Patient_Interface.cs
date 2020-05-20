@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using RaspberryPiCore.LCD;
-using RaspberryPiCore;
 using System.Threading;
 
 namespace RPI_Software
