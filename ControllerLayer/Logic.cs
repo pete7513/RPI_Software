@@ -37,9 +37,7 @@ namespace LogicLayer
       {
          DBaccess = new SqlDBDataAccess();
          //Liteaccess = new SqliteDataAccess();
-
          ADC = new ADC1015();
-         Patient = new Patient_CPR("NN", "NCPR");
 
          //Atribut værdier oprettes
          EKGID = "1011";
@@ -62,7 +60,6 @@ namespace LogicLayer
 
          int periode = 10;
          int samplerate = 25;
-         sample = 0; 
 
          //antalMaalinger er antallet af målinger som ekgmåleren tager over perioden på 50 sekunder. 
          int AntalMaalinger = periode * samplerate;
